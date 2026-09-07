@@ -42,10 +42,10 @@
         <figcaption><span>One model, seven simulated embodiments.</span><span>Grasps on held-out objects</span></figcaption>
       </figure>
       <dl class="metrics">
-        <div><dt>Seen embodiments</dt><dd>92.40<span>%</span></dd><p>Mean simulation success</p></div>
-        <div><dt>Unseen embodiments</dt><dd>74.02<span>%</span></dd><p>Zero-shot simulation success</p></div>
-        <div><dt>Generation time</dt><dd>0.16<span>s</span></dd><p>Batch 1, including realization</p></div>
-        <div><dt>Real-world evaluation</dt><dd>76.00<span>%</span></dd><p>152 successes in 200 trials</p></div>
+        <div><dt>Seen embodiments</dt><dd>92.40<span>%</span></dd><dd class="metric-note">Mean simulation success</dd></div>
+        <div><dt>Unseen embodiments</dt><dd>74.02<span>%</span></dd><dd class="metric-note">Zero-shot simulation success</dd></div>
+        <div><dt>Generation time</dt><dd>0.16<span>s</span></dd><dd class="metric-note">Batch 1, including realization</dd></div>
+        <div><dt>Real-world evaluation</dt><dd>76.00<span>%</span></dd><dd class="metric-note">152 successes in 200 trials</dd></div>
       </dl>
     </section>
 
@@ -107,10 +107,10 @@
           <table class="ablation-table"><caption>Unseen-embodiment mean success (%)</caption><thead><tr><th scope="col">Representation</th><th scope="col">Success ↑</th></tr></thead><tbody><tr><th scope="row">Full FIRA-Grasp</th><td><strong>74.02</strong></td></tr><tr><th scope="row">w/o FSA</th><td>33.90</td></tr><tr><th scope="row">w/o CFA</th><td>19.40</td></tr><tr><th scope="row">w/o FSA &amp; CFA</th><td>0.95</td></tr></tbody></table>
           <p class="muted">The examples show a closing tendency without FSA, but misplaced functional parts. Without CFA, part placement is more recognizable, yet inconsistent local directions disrupt coordinated closure.</p>
         </div>
-        <figure class="paper-figure ablation-figure"><a class="figure-link" href="assets/ablation.png" data-lightbox aria-label="Enlarge alignment ablation examples"><img src="assets/ablation.png" loading="lazy" alt="Paper examples contrasting full alignment with removal of FSA or CFA."></a><figcaption>Functional placement and coordinated closure.</figcaption></figure>
+        <figure class="paper-figure ablation-figure"><a class="figure-link" href="assets/ablation.png" data-lightbox aria-label="Enlarge alignment ablation examples"><img src="assets/ablation.png" width="1400" height="436" loading="lazy" alt="Paper examples contrasting full alignment with removal of FSA or CFA."></a><figcaption>Functional placement and coordinated closure.</figcaption></figure>
       </div>
       <div class="analysis-grid robustness">
-        <figure class="paper-figure"><a class="figure-link" href="assets/finger-length.png" data-lightbox aria-label="Enlarge finger-length robustness curves"><img src="assets/finger-length.png" loading="lazy" alt="Success under finger-length scales from 0.8 to 1.2 for seen and unseen embodiments."></a><figcaption>Finger-length changes without retraining.</figcaption></figure>
+        <figure class="paper-figure"><a class="figure-link" href="assets/finger-length.png" data-lightbox aria-label="Enlarge finger-length robustness curves"><img src="assets/finger-length.png" width="1500" height="625" loading="lazy" alt="Success under finger-length scales from 0.8 to 1.2 for seen and unseen embodiments."></a><figcaption>Finger-length changes without retraining.</figcaption></figure>
         <div><h3>Beyond the original geometry</h3><p>With fingers lengthened by 10%, success stays above 84% on all seen embodiments and at least 63% on all unseen embodiments. Geometry-dependent inputs are updated; functional correspondence and model weights stay fixed.</p><h3 class="limitation-title">Grasp diversity</h3><p class="muted">Success does not capture the full range of generated grasps. FIRA-Grasp’s measured diversity is 0.293 rad, below the reported baselines. Concentration of Functional Node Poses before inverse kinematics suggests the learned distribution may also limit diversity.</p></div>
       </div>
     </section>
