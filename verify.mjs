@@ -11,7 +11,7 @@ const js = readFileSync(join(output, 'site.js'), 'utf8');
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(ids.length, new Set(ids).size, 'Duplicate HTML id');
 assert.equal([...html.matchAll(/<h1\b/g)].length, 1, 'Expected one main heading');
-for (const [, link] of html.matchAll(/\b(?:src|href)="([^"]+)"/g)) {
+for (const [, link] of html.matchAll(/\b(?:src|href|poster)="([^"]+)"/g)) {
   assert(!/^(?:[a-z]+:|\/\/)/i.test(link), 'External URL: ' + link);
   if (link.startsWith('#')) assert(ids.includes(link.slice(1)), 'Broken anchor: ' + link);
   else {
@@ -39,6 +39,18 @@ assert(/name="referrer" content="no-referrer"/.test(html));
 assert(/Content-Security-Policy/.test(html));
 assert(/prefers-reduced-motion/.test(css));
 assert(/@media\(max-width:700px\)/.test(css));
+assert(html.indexOf('id="video"') < html.indexOf('id="abstract"'), 'Opening media must precede the abstract');
+assert(html.includes('class="publication-header wrap"'), 'Expected academic publication header');
+assert(!/class="(?:hero-heading|site-header|metrics)"/.test(html), 'Editorial masthead or hero metrics remain');
+const hasVideo = existsSync(join(output, 'assets/teaser.mp4'));
+if (hasVideo) {
+  assert(/<video[^>]*\bcontrols\b[^>]*\bplaysinline\b/.test(html), 'Expected an accessible native video player');
+  assert(html.includes('<source src="assets/teaser.mp4" type="video/mp4">'));
+  assert(!html.includes('Video not yet provided'), 'Stale missing-video message');
+} else {
+  assert(html.includes('Video not yet provided'), 'Missing-video state must be explicit');
+  assert(!/<video\b/.test(html), 'Do not present a broken or empty video player');
+}
 for (const text of [html, css, js]) {
   assert(!/github\.com|github\.io|youtube\.com|youtu\.be|fonts\.google|google-analytics|mailto:|\/home\/|\/Users\/|\.edu\b|sourceMappingURL|First Author|Second Author|TODO|81\.2|44\.55|TRIAD|morphology-conditioned realizer/i.test(text), 'Old content, identity, or external dependency found');
 }
@@ -51,6 +63,7 @@ assert.equal(((84+68)/200*100).toFixed(2), '76.00');
 let total = 0;
 function count(dir) { for (const entry of readdirSync(dir)) { const path = join(dir, entry); const stat = statSync(path); if (stat.isDirectory()) count(path); else { total++; assert(stat.size < 25 * 1024 * 1024, 'Asset exceeds direct-upload limit'); } } }
 count(output);
-assert.equal(total, 12, 'Unexpected public artifact count');
-console.log('PASS: 12 public files; local links, anchors, image dimensions and metadata, current values, anonymous-source checks, and no third-party dependencies.');
+assert.equal(total, hasVideo ? 13 : 12, 'Unexpected public artifact count');
+console.log(`PASS: ${total} public files; opening media order, resource states, local links, anchors, image dimensions and metadata, current values, anonymity checks, and no third-party dependencies.`);
+if (hasVideo) console.log('Video file presence checked; audiovisual content and binary metadata require a separate anonymity review.');
 console.log('Static checks only. Public hosting, browser layout, and reviewer access require separate verification.');
