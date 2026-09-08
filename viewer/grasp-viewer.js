@@ -3,6 +3,12 @@ import { GLTFLoader } from '../vendor/three/GLTFLoader.js';
 import { OrbitControls } from '../vendor/three/OrbitControls.js';
 
 const dataBase = new URL('../grasps/', import.meta.url);
+const releaseQuery = new URL(import.meta.url).search;
+function dataURL(path) {
+  const url = new URL(path, dataBase);
+  url.search = releaseQuery;
+  return url;
+}
 const loader = new GLTFLoader();
 const geometryCache = new Map();
 const poseCache = new Map();
@@ -14,11 +20,11 @@ async function readJSON(url) {
   return response.json();
 }
 function geometry(path) {
-  if (!geometryCache.has(path)) geometryCache.set(path, loader.loadAsync(new URL(path, dataBase).href));
+  if (!geometryCache.has(path)) geometryCache.set(path, loader.loadAsync(dataURL(path).href));
   return geometryCache.get(path);
 }
 function poses(path) {
-  if (!poseCache.has(path)) poseCache.set(path, readJSON(new URL(path, dataBase)));
+  if (!poseCache.has(path)) poseCache.set(path, readJSON(dataURL(path)));
   return poseCache.get(path);
 }
 function element(tag, className, text) {
@@ -37,8 +43,7 @@ class GraspView {
     this.status = element('span', 'grasp-status', 'Loading 3D view…');
     this.viewport.append(this.status);
     const caption = element('figcaption', '', hand.label);
-    this.source = element('span', 'grasp-source');
-    this.card.append(caption, this.viewport, this.source);
+    this.card.append(caption, this.viewport);
     this.sequence = 0;
   }
   async initialize() {
@@ -124,7 +129,6 @@ class GraspView {
         node.matrix.fromArray(grasp.matrices[i]).transpose();
         node.matrixWorldNeedsUpdate = true;
       });
-      this.source.textContent = `Trial ${String(grasp.sample).padStart(3,'0')} · repeat ${grasp.repeat + 1}`;
       this.frame();
       this.status.hidden = true;
     } catch (error) {
@@ -219,7 +223,7 @@ function createGallery(catalog) {
   return gallery;
 }
 
-readJSON(new URL('catalog.json',dataBase)).then(catalog => {
+readJSON(dataURL('catalog.json')).then(catalog => {
   root.replaceChildren(createGallery(catalog));
 }).catch(error => {
   root.replaceChildren(element('p','loading-note','The interactive grasp data could not be loaded. Please reload the page.'));

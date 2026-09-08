@@ -1,5 +1,6 @@
 // Shared by the repository page and the local build: no generated-only player.
-fetch('media.json').then(response => {
+const mediaRelease = new URL(document.currentScript.src).search;
+fetch('media.json' + mediaRelease).then(response => {
   if (!response.ok) throw new Error('Media configuration unavailable');
   return response.json();
 }).then(config => {
@@ -8,6 +9,7 @@ fetch('media.json').then(response => {
     if (!entry?.src) return;
     const url = new URL(entry.src, document.baseURI);
     if (url.origin !== location.origin) throw new Error('Media must be hosted with the project');
+    url.search = mediaRelease;
     const video = document.createElement('video');
     video.controls = true;
     video.playsInline = true;
