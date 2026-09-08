@@ -1,6 +1,20 @@
-dist/
-node_modules/
-*.zip
-*.tar.gz
-.DS_Store
-*.log
+# Only reviewed website files belong in this repository.
+/*
+!/.gitignore
+!/.nojekyll
+!/README.md
+!/index.html
+!/styles.css
+!/site.js
+!/favicon.svg
+!/robots.txt
+!/_headers
+!/assets/
+/assets/*
+!/assets/ablation.png
+!/assets/alignment.png
+!/assets/finger-length.png
+!/assets/grasps.png
+!/assets/method.png
+!/assets/real-grasps.png
+!/assets/teaser.mp4
