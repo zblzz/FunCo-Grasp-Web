@@ -100,3 +100,4 @@ https://2027.ieee-icra.org/contribute/call-for-icra-2027-papers-now-accepting-su
 匿名是对评审可见的信息而言，并不意味着托管服务无法知道上传者。IEEE RAS 采用 soft double-anonymous：必要的机器人／设备图可以保留，但作者、机构、实验室标志、人脸及文件元数据应去除，不能链接至会显示作者身份的外部网站。即使材料检查通过，也无法承诺从公开既有工作或硬件推断作者的概率为零。
 
 noindex、robots.txt 与 no-referrer 只是辅助措施，不是访问控制，更不等于已经完成匿名审核。上线检查见 ANONYMITY.md。
+# ICRA2027_FIRA-Grasp
