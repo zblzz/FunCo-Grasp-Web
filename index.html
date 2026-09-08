@@ -6,133 +6,101 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>FIRA-Grasp | Cross-Embodiment Dexterous Grasp Generation</title>
-  <meta name="description" content="Functional Interaction Representation Alignment for zero-shot dexterous grasp generation across robotic embodiments. Anonymous review materials.">
+  <meta name="description" content="Functional Interaction Representation Alignment for cross-embodiment dexterous grasp generation. Anonymous project page.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="site.js" defer></script>
+  <script src="media.js" defer></script>
+  <script src="viewer/grasp-viewer.js" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <main id="main">
     <header class="publication-header wrap" id="top">
-      <h1 id="title"><span class="method-name">FIRA-Grasp:</span> Functional Interaction Representation Alignment for Cross-Embodiment Dexterous Grasp Generation</h1>
+      <h1><span class="method-name">FIRA-Grasp:</span> Functional Interaction Representation Alignment for Cross-Embodiment Dexterous Grasp Generation</h1>
       <p class="publication-authors">Anonymous Authors</p>
       <p class="publication-venue">ICRA 2027 · Anonymous review version</p>
-      <div class="publication-links" aria-label="Project resources">
-        <span class="resource is-unavailable" aria-disabled="true" title="The final anonymous manuscript has not been added">Paper <small>pending</small></span>
-        <a class="resource" href="#video"><span class="play-icon" aria-hidden="true">▶</span> Video</a>
-        <span class="resource is-unavailable" aria-disabled="true" title="An anonymous code repository has not been added">Code <small>pending</small></span>
-      </div>
+      <nav class="publication-links" aria-label="Project resources">
+        <button class="resource-button" id="paper-link" type="button" disabled aria-label="Paper PDF, not yet uploaded">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6"/></svg>
+          <span>Paper</span><small>Pending</small>
+        </button>
+        <a class="resource-button" id="code-link" href="https://anonymous.4open.science/r/ICRA2027_FIRA-Grasp-B68E/README.md" target="_blank" rel="noopener noreferrer" aria-label="Code availability in the anonymous repository; implementation release pending">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></svg>
+          <span>Code</span><small>Pending</small>
+        </a>
+      </nav>
     </header>
 
     <section class="teaser wrap" id="video" aria-label="Project video">
-      <!-- TEASER_START -->
-      <figure class="video-pending">
-        <div class="video-poster"><img src="assets/real-grasps.png" width="1800" height="1073" fetchpriority="high" alt="Representative real-world grasp stills from the manuscript; the project video has not yet been provided."></div>
-        <figcaption><strong>Project video</strong><span class="media-status">Video not yet provided · Manuscript stills shown</span></figcaption>
-      </figure>
-      <!-- TEASER_END -->
-      <p class="teaser-caption">Zero-shot dexterous grasp generation across robotic embodiments, without target-hand grasp data or fine-tuning.</p>
+      <div class="media-slot" data-media="teaser" aria-label="Project video placeholder">
+        <div class="media-placeholder"><span class="play-mark" aria-hidden="true">▷</span><span>Project video</span><small>Video coming soon</small></div>
+      </div>
     </section>
 
     <section class="abstract-section" id="abstract" aria-labelledby="abstract-title">
-      <div class="wrap">
+      <div class="wrap narrow">
         <h2 id="abstract-title">Abstract</h2>
-        <div class="abstract-text">
-          <p>Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Sharing models or aligning hand morphology alone does not ensure consistent functional semantics for grasp interactions. FIRA-Grasp uses Functional Interaction Representation Alignment to align corresponding hand regions and their local interaction frames, giving hand–object and intra-hand relations consistent semantics across embodiments. A node–edge diffusion model predicts the spatial layout of these regions, and fixed inverse kinematics converts the layout into target-hand joint configurations. Adaptation requires only the geometric and kinematic model of a new hand and a one-time lightweight manual functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. Trained on 48 objects from three embodiments in the filtered CMapDataset, FIRA-Grasp achieves mean success rates of 92.40% on the three seen embodiments and 74.02% on four unseen embodiments, evaluated on 10 held-out objects.</p>
-        </div>
+        <p>Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Sharing models or aligning hand morphology alone does not ensure consistent functional semantics for grasp interactions. We introduce FIRA-Grasp, which uses Functional Interaction Representation Alignment to align corresponding hand regions and their local interaction frames, giving hand–object and intra-hand relations consistent semantics across embodiments. A node–edge diffusion model predicts the spatial layout of these regions, and fixed inverse kinematics converts the layout into target-hand joint configurations. This separates embodiment-independent grasp generation from embodiment-specific kinematic realization. Adaptation requires only the geometric and kinematic model of a new hand and a one-time lightweight manual functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. We train FIRA-Grasp on grasps of 48 objects from three embodiments in the filtered CMapDataset. On 10 held-out objects, it achieves average success rates of 92.40% on the three seen embodiments and 74.02% on four unseen embodiments. These results support functional interaction alignment for zero-shot cross-embodiment grasp generation.</p>
       </div>
     </section>
 
     <section class="section wrap" id="method" aria-labelledby="method-title">
-      <div class="section-heading"><h2 id="method-title">Method Overview</h2></div>
-      <div class="method-lead">
-        <div class="prose"><p>FIRA establishes corresponding functional regions and canonical interaction frames before learning grasp relations. This gives hand–object and intra-hand relations consistent meanings across embodiments.</p><p>A node–edge diffusion model predicts Functional Node Poses. Fixed inverse kinematics then converts those poses into an executable configuration for the target hand.</p></div>
-      </div>
-      <div class="method-points">
-        <p><strong>Functional alignment.</strong> Functional Structure Alignment (FSA) matches corresponding hand regions; Canonical Frame Alignment (CFA) standardizes their local interaction axes.</p>
-        <p><strong>Shared generation.</strong> Object–node and node–node relations guide a diffusion model to generate Functional Node Poses.</p>
-        <p><strong>Specific realization.</strong> Fixed Functional Node Pyroki fits the generated targets to the target hand’s kinematics, without learned retargeting.</p>
-      </div>
-      <figure class="paper-figure">
-        <a class="figure-link" href="assets/method.png" data-lightbox aria-label="Enlarge the FIRA-Grasp architecture">
-          <img src="assets/method.png" width="2400" height="1233" loading="lazy" alt="FIRA-Grasp architecture: object patches and a morphology-aware functional graph condition six Diffusion Units, followed by 20-step DDIM and Functional Node Pyroki.">
-          <span class="expand" aria-hidden="true">↗</span>
-        </a><figcaption>From object geometry and a Functional Hand Graph to an executable grasp.</figcaption>
+      <h2 id="method-title">Pipeline Overview</h2>
+      <figure class="paper-figure intro-figure">
+        <a class="figure-link" href="assets/intro1.png" data-lightbox aria-label="Enlarge functional interaction alignment figure"><img src="assets/intro1.png" width="1838" height="2000" loading="lazy" alt="Functional correspondence, canonical interaction frames, and grasp transfer across robotic embodiments."></a>
+        <figcaption>Functional Interaction Representation Alignment. A lightweight manual functional annotation establishes (a) cross-hand functional correspondence and (b) canonical interaction frames, enabling (c) grasp transfer from training to unseen embodiments.</figcaption>
       </figure>
-      <div class="transfer-note"><h3>Adapting to a new embodiment</h3><p>Its geometry, URDF, and a one-time lightweight manual functional annotation. No target-hand grasp demonstrations, fine-tuning, or learned retargeting.</p></div>
-      <details class="figure-detail"><summary>Functional correspondence and canonical frames <span aria-hidden="true">+</span></summary>
-        <figure class="alignment-figure"><a class="figure-link" href="assets/alignment.png" data-lightbox aria-label="Enlarge functional alignment examples"><img src="assets/alignment.png" width="1563" height="1700" loading="lazy" alt="Functional annotations establish corresponding wrist and finger regions and forward, close, and lateral axes across robotic hands."></a><figcaption>Functional Interaction Representation Alignment, illustrated in the manuscript.</figcaption></figure>
-      </details>
+      <figure class="paper-figure">
+        <a class="figure-link" href="assets/overview1.png" data-lightbox aria-label="Enlarge FIRA-Grasp pipeline"><img src="assets/overview1.png" width="2600" height="1336" loading="lazy" alt="FIRA-Grasp pipeline: Global Input, Shared Interaction Generation, and Specific Realization."></a>
+        <figcaption><strong>Overview of FIRA-Grasp.</strong> Object and hand inputs are encoded into <b>O</b>, <b>N</b>, and <b>E</b>. ON/NN interaction diffusion generates a functional-node layout, which fixed inverse kinematics converts into an executable target-hand grasp.</figcaption>
+      </figure>
     </section>
 
-    <section class="results-section" id="results" aria-labelledby="results-title">
-      <div class="wrap section">
-        <div class="section-heading"><h2 id="results-title">Simulation Results</h2></div>
-        <div class="results-intro"><p>Trained on Allegro, Barrett, and ShadowHand. Evaluated on the same 10 held-out objects with four additional embodiments, without target-hand training.</p><p>Mean success is 92.40% on seen embodiments and 74.02% on unseen embodiments. Generation takes 0.16 s per executable grasp at batch size 1.</p></div>
-      <figure class="paper-figure simulation-figure">
-        <a class="figure-link" href="assets/grasps.png" data-lightbox aria-label="Enlarge generated grasps across seven robotic embodiments">
-          <img src="assets/grasps.png" width="2200" height="832" loading="lazy" alt="Paper examples of generated grasps: purple ShadowHand, yellow Allegro and mint Barrett on the left; coral ApexHand, green XHand, teal LEAP and pink Robotiq-3F on the right.">
-          <span class="expand" aria-hidden="true">↗</span>
-        </a>
-        <figcaption><span>One model, seven simulated embodiments.</span><span>Grasps on held-out objects</span></figcaption>
-      </figure>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Method comparison table; scroll horizontally on small screens">
-          <table class="comparison"><caption>Mean grasp success and generation time. Higher success and lower time are better.</caption>
-            <thead><tr><th scope="col">Method</th><th scope="col">Seen (%) ↑</th><th scope="col">Unseen (%) ↑</th><th scope="col">Time (s) ↓</th></tr></thead>
+    <section class="section wrap" id="simulation" aria-labelledby="simulation-title">
+      <h2 id="simulation-title">Simulation Results</h2>
+      <figure class="paper-figure simulation-figure"><a class="figure-link" href="assets/exe1.png" data-lightbox aria-label="Enlarge simulated grasp results"><img src="assets/exe1.png" width="2600" height="983" loading="lazy" alt="Generated grasps on held-out objects across seen and unseen embodiments, reproduced from the manuscript."></a></figure>
+
+      <div class="results-table-block" id="main-results">
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Main experimental results, scroll horizontally on small screens">
+          <table class="results-table" aria-describedby="results-caption">
+            <thead>
+              <tr><th rowspan="3" scope="col">Method</th><th colspan="9" scope="colgroup">Success rate (%) ↑</th><th rowspan="3" scope="col" class="group-start">Eff. (s) ↓</th></tr>
+              <tr><th colspan="4" scope="colgroup" class="group-start">Seen embodiments</th><th colspan="5" scope="colgroup" class="group-start">Unseen embodiments</th></tr>
+              <tr><th scope="col" class="group-start">Allegro</th><th scope="col">Barrett</th><th scope="col">ShadowHand</th><th scope="col" class="average">Avg.</th><th scope="col" class="group-start">ApexHand</th><th scope="col">XHand</th><th scope="col">LEAP</th><th scope="col">Robotiq-3F</th><th scope="col" class="average">Avg.</th></tr>
+            </thead>
             <tbody>
-              <tr><th scope="row">GenDexGrasp</th><td>56.77</td><td>25.22</td><td>18.77</td></tr>
-              <tr><th scope="row">CEDex</th><td>88.08</td><td>59.00</td><td>12.52</td></tr>
-              <tr><th scope="row">D(R,O) Grasp</th><td>85.33</td><td>38.13</td><td>0.75</td></tr>
-              <tr><th scope="row">T(R,O) Grasp</th><td>91.07</td><td>11.95</td><td>0.21</td></tr>
-              <tr><th scope="row">UniMorphGrasp <sup>†</sup></th><td>94.00</td><td>—</td><td>—</td></tr>
-              <tr class="ours"><th scope="row">FIRA-Grasp <span>Ours</span></th><td>92.40</td><td><strong>74.02</strong></td><td><strong>0.16</strong></td></tr>
+              <tr data-method="gendex"><th scope="row">GenDexGrasp</th><td class="group-start">67.00</td><td>50.00</td><td>53.30</td><td class="average">56.77</td><td class="group-start">15.17</td><td>29.37</td><td>25.33</td><td>31.00</td><td class="average">25.22</td><td class="group-start">18.77</td></tr>
+              <tr data-method="cedex"><th scope="row">CEDex</th><td class="group-start"><span class="rank-second">92.66</span></td><td>85.16</td><td>86.43</td><td class="average">88.08</td><td class="group-start"><span class="rank-second">46.20</span></td><td><span class="rank-second">62.00</span></td><td><span class="rank-second">41.50</span></td><td><span class="rank-first">86.30</span></td><td class="average"><span class="rank-second">59.00</span></td><td class="group-start">12.52</td></tr>
+              <tr data-method="dro"><th scope="row">D(R,O) Grasp</th><td class="group-start">89.90</td><td>88.30</td><td>77.80</td><td class="average">85.33</td><td class="group-start">24.20</td><td>58.60</td><td>4.80</td><td>64.90</td><td class="average">38.13</td><td class="group-start">0.75</td></tr>
+              <tr data-method="tro"><th scope="row">T(R,O) Grasp</th><td class="group-start">89.10</td><td><span class="rank-second">91.60</span></td><td>92.50</td><td class="average">91.07</td><td class="group-start">1.30</td><td>4.00</td><td>0.10</td><td>42.40</td><td class="average">11.95</td><td class="group-start"><span class="rank-second">0.21</span></td></tr>
+              <tr data-method="unimorph"><th scope="row">UniMorphGrasp<sup>†</sup></th><td class="group-start">90.30</td><td><span class="rank-first">93.00</span></td><td><span class="rank-first">98.80</span></td><td class="average"><span class="rank-first">94.00</span></td><td class="group-start">--</td><td>--</td><td>--</td><td>--</td><td class="average">--</td><td class="group-start">--</td></tr>
+              <tr data-method="fira" class="ours"><th scope="row">FIRA-Grasp <span>(Ours)</span></th><td class="group-start"><span class="rank-first">97.20</span></td><td>86.20</td><td><span class="rank-second">93.80</span></td><td class="average"><span class="rank-second">92.40</span></td><td class="group-start"><span class="rank-first">68.20</span></td><td><span class="rank-first">72.73</span></td><td><span class="rank-first">80.40</span></td><td><span class="rank-second">74.73</span></td><td class="average"><span class="rank-first">74.02</span></td><td class="group-start"><span class="rank-first">0.16</span></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="table-note">† UniMorphGrasp values follow its published protocol; code was unavailable at evaluation. They are not a matched reproduction. — denotes an unavailable result. Time is measured on seen embodiments.</p>
-        <details class="protocol"><summary>Evaluation protocol and model configuration <span aria-hidden="true">+</span></summary>
-          <div class="protocol-body"><p>Simulation uses 100 grasps per embodiment–object pair and three repeated evaluations. In Isaac Gym, the hand closes for 1 s and the object receives six directional disturbances. Success requires final displacement below 2 cm.</p><p>All locally evaluated methods, including CEDex, use batch size 1. Timing includes encoding, generation, and optimization or inverse kinematics after warm-up and synchronization on an RTX 5880 Ada; Functional Node Pyroki runs on the CPU. Loading, one-time compilation, I/O, and simulation are excluded.</p><p>The model uses 25 Functional Node slots, six Diffusion Units, and 20-step stochastic DDIM. Its 13.647M parameters comprise 13.041M trainable parameters and a frozen 0.606M VQ-VAE. Training uses 14,011 grasps of 48 objects and 24 grasps per GPU.</p></div>
-        </details>
-        <div class="embodiment-results">
-          <h3>Each unseen embodiment</h3>
-          <dl class="embodiment-grid"><div><dt>ApexHand</dt><dd>68.20<span>%</span></dd></div><div><dt>XHand</dt><dd>72.73<span>%</span></dd></div><div><dt>LEAP</dt><dd>80.40<span>%</span></dd></div><div><dt>Robotiq-3F</dt><dd>74.73<span>%</span></dd></div></dl>
-        </div>
+        <p class="table-caption" id="results-caption">Grasp success on held-out objects across seen and unseen embodiments, and inference time on seen embodiments. Red and yellow mark the best and second-best values. <sup>†</sup>UniMorphGrasp follows its published protocol; code was unavailable at evaluation. -- denotes unavailable results.</p>
+      </div>
+
+      <div class="grasp-gallery" id="grasps">
+        <h3>Simulated Grasp Visualization</h3>
+        <p class="viewer-hint">Drag to rotate · Scroll to zoom · 10 selected successful grasps per object</p>
+        <div id="grasp-gallery-rows"><p class="loading-note" role="status">Loading interactive grasp gallery…</p></div>
+        <noscript><p>Enable JavaScript to explore the selected grasps in 3D.</p></noscript>
       </div>
     </section>
 
-    <section class="real-section" id="real-world" aria-labelledby="real-title">
-      <div class="wrap section">
-        <div class="section-heading"><h2 id="real-title">Real-world Results</h2></div>
-        <div class="real-layout"><div class="real-copy"><p>ApexHand and Revo2 are mounted on UR5 arms with RealSense D435i observations. The simulation-trained model is deployed without real-world training or fine-tuning.</p>
-          <dl class="real-metrics"><div><dt>ApexHand</dt><dd>84<span>/100</span></dd></div><div><dt>Revo2</dt><dd>68<span>/100</span></dd></div></dl><p class="small-prose">Overall success is 76.00% (152/200). 10 objects, 10 random placements per object, per embodiment. Success requires lifting the object clear of the table and maintaining a stable grasp.</p></div>
-          <figure class="real-figure"><a class="figure-link" href="assets/real-grasps.png" data-lightbox aria-label="Enlarge real-world grasp examples"><img src="assets/real-grasps.png" width="1800" height="1073" loading="lazy" alt="Real Revo2 grasps of a ball and milk carton, and ApexHand grasps of a vase and mustard bottle, on UR5 arms."><span class="expand" aria-hidden="true">↗</span></a><figcaption>Representative successful grasps. Revo2 (top), ApexHand (bottom).</figcaption></figure></div>
+    <section class="section wrap real-section" id="real-world" aria-labelledby="real-title">
+      <h2 id="real-title">Real-world Results</h2>
+      <div class="real-videos">
+        <figure><h3>ApexHand</h3><div class="media-slot" data-media="apex" aria-label="ApexHand real-world video placeholder"><div class="media-placeholder"><span class="play-mark" aria-hidden="true">▷</span><span>ApexHand</span><small>Video coming soon</small></div></div></figure>
+        <figure><h3>Revo2</h3><div class="media-slot" data-media="revo2" aria-label="Revo2 real-world video placeholder"><div class="media-placeholder"><span class="play-mark" aria-hidden="true">▷</span><span>Revo2</span><small>Video coming soon</small></div></div></figure>
       </div>
-    </section>
-
-    <section class="section wrap" aria-labelledby="ablation-title">
-      <div class="section-heading"><h2 id="ablation-title">Ablation Studies</h2></div>
-      <div class="analysis-grid">
-        <div><p>Removing FSA reduces unseen-embodiment success to 33.90%; removing CFA reduces it to 19.40%. Without either, success is 0.95%.</p>
-          <table class="ablation-table"><caption>Unseen-embodiment mean success (%)</caption><thead><tr><th scope="col">Representation</th><th scope="col">Success ↑</th></tr></thead><tbody><tr><th scope="row">Full FIRA-Grasp</th><td><strong>74.02</strong></td></tr><tr><th scope="row">w/o FSA</th><td>33.90</td></tr><tr><th scope="row">w/o CFA</th><td>19.40</td></tr><tr><th scope="row">w/o FSA &amp; CFA</th><td>0.95</td></tr></tbody></table>
-          <p class="muted">The examples show a closing tendency without FSA, but misplaced functional parts. Without CFA, part placement is more recognizable, yet inconsistent local directions disrupt coordinated closure.</p>
-        </div>
-        <figure class="paper-figure ablation-figure"><a class="figure-link" href="assets/ablation.png" data-lightbox aria-label="Enlarge alignment ablation examples"><img src="assets/ablation.png" width="1400" height="436" loading="lazy" alt="Paper examples contrasting full alignment with removal of FSA or CFA."></a><figcaption>Functional placement and coordinated closure.</figcaption></figure>
-      </div>
-      <div class="analysis-grid robustness">
-        <figure class="paper-figure"><a class="figure-link" href="assets/finger-length.png" data-lightbox aria-label="Enlarge finger-length robustness curves"><img src="assets/finger-length.png" width="1500" height="625" loading="lazy" alt="Success under finger-length scales from 0.8 to 1.2 for seen and unseen embodiments."></a><figcaption>Finger-length changes without retraining.</figcaption></figure>
-        <div><h3>Finger-Length Variation</h3><p>With fingers lengthened by 10%, success stays above 84% on all seen embodiments and at least 63% on all unseen embodiments. Geometry-dependent inputs are updated; functional correspondence and model weights stay fixed.</p><h3 class="limitation-title">Grasp Diversity</h3><p class="muted">Success does not capture the full range of generated grasps. FIRA-Grasp’s measured diversity is 0.293 rad, below the reported baselines. Concentration of Functional Node Poses before inverse kinematics suggests the learned distribution may also limit diversity.</p></div>
-      </div>
-    </section>
-
-    <section class="wrap review-note" aria-labelledby="review-title">
-      <h2 id="review-title">Review Materials</h2>
-      <p>This anonymous page provides a visual overview of the work. The submitted manuscript and accompanying video, if supplied, remain the review materials.</p>
     </section>
   </main>
-  <footer class="footer"><p>FIRA-Grasp · Anonymous review version</p><a href="#top">Back to top ↑</a></footer>
+  <footer class="footer"><p>FIRA-Grasp · Anonymous review version</p><a href="assets/THIRD_PARTY_NOTICES.txt">Third-party notices</a></footer>
   <dialog id="figure-dialog" aria-label="Enlarged paper figure"><button type="button" class="dialog-close" aria-label="Close enlarged figure">Close ×</button><img id="dialog-image" alt=""><p id="dialog-caption"></p></dialog>
 </body>
 </html>

@@ -1,0 +1,2539 @@
+{
+  "version": 1,
+  "pose": "saved Isaac isaac_q",
+  "selection_rule": "Ten evenly spaced successful trials from repeat 0, in sample order.",
+  "hands": {
+    "allegro": {
+      "contactdb+apple": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+camera": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 31
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+cylinder_medium": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 53
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 86
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+rubber_duck": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+door_knob": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+water_bottle": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+baseball": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+pear": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+potted_meat_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+tomato_soup_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ]
+    },
+    "barrett": {
+      "contactdb+apple": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 23
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 86
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+camera": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 19
+        },
+        {
+          "repeat": 0,
+          "sample": 30
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 60
+        },
+        {
+          "repeat": 0,
+          "sample": 69
+        },
+        {
+          "repeat": 0,
+          "sample": 79
+        },
+        {
+          "repeat": 0,
+          "sample": 90
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "contactdb+cylinder_medium": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 8
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 50
+        },
+        {
+          "repeat": 0,
+          "sample": 57
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 71
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "contactdb+rubber_duck": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+door_knob": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 23
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 57
+        },
+        {
+          "repeat": 0,
+          "sample": 68
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 86
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+water_bottle": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 24
+        },
+        {
+          "repeat": 0,
+          "sample": 37
+        },
+        {
+          "repeat": 0,
+          "sample": 48
+        },
+        {
+          "repeat": 0,
+          "sample": 58
+        },
+        {
+          "repeat": 0,
+          "sample": 67
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "ycb+baseball": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 53
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+pear": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+potted_meat_can": [
+        {
+          "repeat": 0,
+          "sample": 1
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 31
+        },
+        {
+          "repeat": 0,
+          "sample": 42
+        },
+        {
+          "repeat": 0,
+          "sample": 51
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+tomato_soup_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 68
+        },
+        {
+          "repeat": 0,
+          "sample": 78
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ]
+    },
+    "shadowhand": {
+      "contactdb+apple": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+camera": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 24
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+cylinder_medium": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+rubber_duck": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 67
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+door_knob": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+water_bottle": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 46
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 68
+        },
+        {
+          "repeat": 0,
+          "sample": 78
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+baseball": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+pear": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+potted_meat_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 29
+        },
+        {
+          "repeat": 0,
+          "sample": 38
+        },
+        {
+          "repeat": 0,
+          "sample": 52
+        },
+        {
+          "repeat": 0,
+          "sample": 63
+        },
+        {
+          "repeat": 0,
+          "sample": 75
+        },
+        {
+          "repeat": 0,
+          "sample": 86
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+tomato_soup_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 42
+        },
+        {
+          "repeat": 0,
+          "sample": 53
+        },
+        {
+          "repeat": 0,
+          "sample": 67
+        },
+        {
+          "repeat": 0,
+          "sample": 79
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ]
+    },
+    "apex_hand": {
+      "contactdb+apple": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 31
+        },
+        {
+          "repeat": 0,
+          "sample": 41
+        },
+        {
+          "repeat": 0,
+          "sample": 52
+        },
+        {
+          "repeat": 0,
+          "sample": 64
+        },
+        {
+          "repeat": 0,
+          "sample": 75
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+camera": [
+        {
+          "repeat": 0,
+          "sample": 1
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 17
+        },
+        {
+          "repeat": 0,
+          "sample": 26
+        },
+        {
+          "repeat": 0,
+          "sample": 40
+        },
+        {
+          "repeat": 0,
+          "sample": 52
+        },
+        {
+          "repeat": 0,
+          "sample": 62
+        },
+        {
+          "repeat": 0,
+          "sample": 72
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+cylinder_medium": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 9
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 31
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 71
+        },
+        {
+          "repeat": 0,
+          "sample": 81
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "contactdb+rubber_duck": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 78
+        },
+        {
+          "repeat": 0,
+          "sample": 86
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+door_knob": [
+        {
+          "repeat": 0,
+          "sample": 1
+        },
+        {
+          "repeat": 0,
+          "sample": 15
+        },
+        {
+          "repeat": 0,
+          "sample": 26
+        },
+        {
+          "repeat": 0,
+          "sample": 39
+        },
+        {
+          "repeat": 0,
+          "sample": 50
+        },
+        {
+          "repeat": 0,
+          "sample": 58
+        },
+        {
+          "repeat": 0,
+          "sample": 68
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+water_bottle": [
+        {
+          "repeat": 0,
+          "sample": 2
+        },
+        {
+          "repeat": 0,
+          "sample": 7
+        },
+        {
+          "repeat": 0,
+          "sample": 17
+        },
+        {
+          "repeat": 0,
+          "sample": 25
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 48
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 72
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+baseball": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 24
+        },
+        {
+          "repeat": 0,
+          "sample": 37
+        },
+        {
+          "repeat": 0,
+          "sample": 47
+        },
+        {
+          "repeat": 0,
+          "sample": 57
+        },
+        {
+          "repeat": 0,
+          "sample": 67
+        },
+        {
+          "repeat": 0,
+          "sample": 78
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+pear": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 53
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+potted_meat_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 28
+        },
+        {
+          "repeat": 0,
+          "sample": 35
+        },
+        {
+          "repeat": 0,
+          "sample": 40
+        },
+        {
+          "repeat": 0,
+          "sample": 50
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+tomato_soup_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 18
+        },
+        {
+          "repeat": 0,
+          "sample": 27
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 60
+        },
+        {
+          "repeat": 0,
+          "sample": 69
+        },
+        {
+          "repeat": 0,
+          "sample": 83
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 95
+        }
+      ]
+    },
+    "leaphand": {
+      "contactdb+apple": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 30
+        },
+        {
+          "repeat": 0,
+          "sample": 41
+        },
+        {
+          "repeat": 0,
+          "sample": 53
+        },
+        {
+          "repeat": 0,
+          "sample": 63
+        },
+        {
+          "repeat": 0,
+          "sample": 75
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+camera": [
+        {
+          "repeat": 0,
+          "sample": 1
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 19
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 42
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+cylinder_medium": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 24
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 67
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+rubber_duck": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+door_knob": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 24
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+water_bottle": [
+        {
+          "repeat": 0,
+          "sample": 2
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 31
+        },
+        {
+          "repeat": 0,
+          "sample": 40
+        },
+        {
+          "repeat": 0,
+          "sample": 50
+        },
+        {
+          "repeat": 0,
+          "sample": 60
+        },
+        {
+          "repeat": 0,
+          "sample": 72
+        },
+        {
+          "repeat": 0,
+          "sample": 85
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "ycb+baseball": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+pear": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 64
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 88
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "ycb+potted_meat_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 22
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "ycb+tomato_soup_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 43
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 64
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 85
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ]
+    },
+    "robotiq_3finger": {
+      "contactdb+apple": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 23
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 57
+        },
+        {
+          "repeat": 0,
+          "sample": 67
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "contactdb+camera": [
+        {
+          "repeat": 0,
+          "sample": 5
+        },
+        {
+          "repeat": 0,
+          "sample": 13
+        },
+        {
+          "repeat": 0,
+          "sample": 19
+        },
+        {
+          "repeat": 0,
+          "sample": 28
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 47
+        },
+        {
+          "repeat": 0,
+          "sample": 68
+        },
+        {
+          "repeat": 0,
+          "sample": 74
+        },
+        {
+          "repeat": 0,
+          "sample": 77
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "contactdb+cylinder_medium": [
+        {
+          "repeat": 0,
+          "sample": 1
+        },
+        {
+          "repeat": 0,
+          "sample": 9
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 37
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 65
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 85
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+rubber_duck": [
+        {
+          "repeat": 0,
+          "sample": 1
+        },
+        {
+          "repeat": 0,
+          "sample": 9
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 32
+        },
+        {
+          "repeat": 0,
+          "sample": 41
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 64
+        },
+        {
+          "repeat": 0,
+          "sample": 75
+        },
+        {
+          "repeat": 0,
+          "sample": 89
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "contactdb+door_knob": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 12
+        },
+        {
+          "repeat": 0,
+          "sample": 28
+        },
+        {
+          "repeat": 0,
+          "sample": 40
+        },
+        {
+          "repeat": 0,
+          "sample": 53
+        },
+        {
+          "repeat": 0,
+          "sample": 62
+        },
+        {
+          "repeat": 0,
+          "sample": 72
+        },
+        {
+          "repeat": 0,
+          "sample": 80
+        },
+        {
+          "repeat": 0,
+          "sample": 90
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "contactdb+water_bottle": [
+        {
+          "repeat": 0,
+          "sample": 2
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 17
+        },
+        {
+          "repeat": 0,
+          "sample": 37
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 54
+        },
+        {
+          "repeat": 0,
+          "sample": 61
+        },
+        {
+          "repeat": 0,
+          "sample": 75
+        },
+        {
+          "repeat": 0,
+          "sample": 90
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+baseball": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 10
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 34
+        },
+        {
+          "repeat": 0,
+          "sample": 44
+        },
+        {
+          "repeat": 0,
+          "sample": 55
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+pear": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 11
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 33
+        },
+        {
+          "repeat": 0,
+          "sample": 45
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 86
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ],
+      "ycb+potted_meat_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 9
+        },
+        {
+          "repeat": 0,
+          "sample": 20
+        },
+        {
+          "repeat": 0,
+          "sample": 29
+        },
+        {
+          "repeat": 0,
+          "sample": 39
+        },
+        {
+          "repeat": 0,
+          "sample": 58
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 79
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 98
+        }
+      ],
+      "ycb+tomato_soup_can": [
+        {
+          "repeat": 0,
+          "sample": 0
+        },
+        {
+          "repeat": 0,
+          "sample": 8
+        },
+        {
+          "repeat": 0,
+          "sample": 21
+        },
+        {
+          "repeat": 0,
+          "sample": 35
+        },
+        {
+          "repeat": 0,
+          "sample": 46
+        },
+        {
+          "repeat": 0,
+          "sample": 56
+        },
+        {
+          "repeat": 0,
+          "sample": 66
+        },
+        {
+          "repeat": 0,
+          "sample": 76
+        },
+        {
+          "repeat": 0,
+          "sample": 87
+        },
+        {
+          "repeat": 0,
+          "sample": 99
+        }
+      ]
+    }
+  }
+}
