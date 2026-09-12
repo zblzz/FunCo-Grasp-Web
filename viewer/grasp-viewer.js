@@ -1,31 +1,48 @@
-import * as THREE from '../vendor/three/three.module.min.js';
-import { GLTFLoader } from '../vendor/three/GLTFLoader.js';
-import { OrbitControls } from '../vendor/three/OrbitControls.js';
-
-const dataBase = new URL('../grasps/', import.meta.url);
-const releaseQuery = new URL(import.meta.url).search;
-function dataURL(path) {
-  const url = new URL(path, dataBase);
-  url.search = releaseQuery;
-  return url;
-}
-const loader = new GLTFLoader();
-const geometryCache = new Map();
-const poseCache = new Map();
+// Small, independent UI: Three.js never blocks the object/grasp controls.
 const root = document.querySelector('#grasp-gallery-rows');
-
-async function readJSON(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error(`Could not load ${new URL(url).pathname.split('/').pop()}`);
-  return response.json();
+const catalog = JSON.parse(document.querySelector('#grasp-catalog').textContent);
+const dataBase = new URL('../grasps/', import.meta.url);
+const pending = new Map();
+const timeoutMs = 30000;
+const metrics = {uiMs:null, firstModelMs:null, allModelsMs:null};
+function record() {
+  const ready = [...root.querySelectorAll('.grasp-card')].filter(card => card.dataset.ready === 'true').length;
+  const now = Math.round(performance.now());
+  if (ready && metrics.firstModelMs === null) metrics.firstModelMs = now;
+  if (ready === 6 && metrics.allModelsMs === null) metrics.allModelsMs = now;
+  root.dataset.performance = JSON.stringify({...metrics, ready});
 }
-function geometry(path) {
-  if (!geometryCache.has(path)) geometryCache.set(path, loader.loadAsync(dataURL(path).href));
-  return geometryCache.get(path);
+function fetchAsset(path, type) {
+  const key = type + ':' + path;
+  if (!pending.has(key)) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    const promise = fetch(new URL(path, dataBase), {signal:controller.signal}).then(response => {
+      if (!response.ok) throw new Error('Grasp resource unavailable');
+      return type === 'json' ? response.json() : response.arrayBuffer();
+    }).finally(() => clearTimeout(timer));
+    pending.set(key, promise);
+    promise.catch(() => pending.delete(key));
+  }
+  return pending.get(key);
 }
-function poses(path) {
-  if (!poseCache.has(path)) poseCache.set(path, readJSON(dataURL(path)));
-  return poseCache.get(path);
+const assets = {
+  binary:path => fetchAsset(path, 'binary'),
+  pose:(hand, object, index) => object.id === catalog.objects[0].id && index === 0
+    ? Promise.resolve(hand.initialPose) : fetchAsset(hand.poses[object.id], 'json')
+};
+let enginePromise;
+let engineAttempt = 0;
+function engine() {
+  if (!enginePromise) {
+    const url = new URL(catalog.engine, new URL('../', import.meta.url));
+    if (engineAttempt++) url.searchParams.set('retry', String(engineAttempt));
+    let timer;
+    const deadline = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('3D engine timed out')), timeoutMs); });
+    enginePromise = Promise.race([import(url.href), deadline])
+      .finally(() => clearTimeout(timer)).catch(error => { enginePromise = null; throw error; });
+  }
+  return enginePromise;
 }
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -33,126 +50,62 @@ function element(tag, className, text) {
   if (text) node.textContent = text;
   return node;
 }
-
-class GraspView {
+class GraspCard {
   constructor(hand) {
     this.hand = hand;
     this.card = element('figure', 'grasp-card');
     this.card.dataset.hand = hand.id;
+    this.card.dataset.ready = 'false';
     this.viewport = element('div', 'grasp-viewport');
-    this.status = element('span', 'grasp-status', 'Loading 3D view…');
-    this.viewport.append(this.status);
-    const caption = element('figcaption', '', hand.label);
-    this.card.append(caption, this.viewport);
+    this.preview = element('img', 'grasp-preview');
+    if (hand.preview) this.preview.src = new URL(hand.preview, dataBase).href;
+    else this.preview.hidden = true;
+    this.preview.alt = `${hand.label}, Apple, grasp 1 — static preview while the interactive model loads.`;
+    this.preview.width = 329; this.preview.height = 295;
+    this.preview.loading = 'lazy'; this.preview.decoding = 'async'; this.preview.fetchPriority = 'low';
+    this.status = element('span', 'grasp-status', 'Loading 3D…');
+    this.status.setAttribute('role', 'status');
+    this.retry = element('button', 'grasp-retry', 'Retry 3D');
+    this.retry.type = 'button'; this.retry.hidden = true;
+    this.retry.addEventListener('click', () => this.update(this.object, this.index));
+    this.viewport.append(this.preview, this.status, this.retry);
+    this.card.append(element('figcaption', '', hand.label), this.viewport);
     this.sequence = 0;
   }
-  async initialize() {
-    this.renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-    this.renderer.setClearColor(0xffffff, 0);
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.25;
-    const canvas = this.renderer.domElement;
-    canvas.tabIndex = 0;
-    canvas.setAttribute('role', 'img');
-    canvas.setAttribute('aria-label', `${this.hand.label} interactive grasp. Drag or use arrow keys to rotate; scroll or use plus and minus to zoom.`);
-    this.viewport.prepend(canvas);
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(38, 1, 0.001, 100);
-    this.camera.up.set(0,0,1);
-    this.controls = new OrbitControls(this.camera, canvas);
-    this.controls.enablePan = false;
-    this.controls.minDistance = 0.04;
-    this.controls.maxDistance = 3;
-    this.controls.addEventListener('change', () => this.render());
-    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x87909c, 2.8));
-    const key = new THREE.DirectionalLight(0xffffff, 3.5);
-    key.position.set(1,-2,3); this.scene.add(key);
-    const fill = new THREE.DirectionalLight(0xffffff, 1.5);
-    fill.position.set(-2,1,1); this.scene.add(fill);
-    this.handGroup = new THREE.Group();
-    this.scene.add(this.handGroup);
-    this.objectMaterial = new THREE.MeshStandardMaterial({color:'#5c8ed8',roughness:.72,metalness:0});
-    const material = new THREE.MeshStandardMaterial({color:this.hand.color, roughness:0.68, metalness:0.04});
-    for (const asset of await Promise.all(this.hand.geometry.map(geometry))) {
-      const model = asset.scene.clone(true);
-      model.traverse(node => { if (node.isMesh) node.material = material; });
-      this.handGroup.add(model);
-    }
-    this.resizeObserver = new ResizeObserver(() => {
-      const width = this.viewport.clientWidth, height = this.viewport.clientHeight;
-      if (!width || !height) return;
-      this.renderer.setSize(width, height, false);
-      this.camera.aspect = width/height;
-      this.camera.updateProjectionMatrix();
-      if (this.objectGroup) this.frame();
-    });
-    this.resizeObserver.observe(this.viewport);
-    canvas.addEventListener('keydown', event => {
-      if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-'].includes(event.key)) return;
-      event.preventDefault();
-      const offset = this.camera.position.clone().sub(this.controls.target);
-      if (event.key === '+' || event.key === '=') offset.multiplyScalar(.9);
-      else if (event.key === '-') offset.multiplyScalar(1.1);
-      else if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') offset.applyAxisAngle(this.camera.up, event.key === 'ArrowLeft' ? .12 : -.12);
-      else {
-        const right = new THREE.Vector3().crossVectors(offset, this.camera.up).normalize();
-        offset.applyAxisAngle(right, event.key === 'ArrowUp' ? .08 : -.08);
-      }
-      this.camera.position.copy(this.controls.target).add(offset);
-      this.controls.update();
-    });
-  }
   async update(object, index) {
+    this.object = object; this.index = index;
     const request = ++this.sequence;
-    this.status.hidden = false;
-    this.status.textContent = 'Loading 3D view…';
+    this.card.dataset.ready = 'false';
+    this.viewport.setAttribute('aria-busy', 'true');
+    this.status.hidden = false; this.status.textContent = 'Loading 3D…';
+    this.retry.hidden = true;
+    // The preview is the actual default selection, never a different object/pose.
+    this.preview.hidden = !this.hand.preview || object.id !== catalog.objects[0].id || index !== 0;
     try {
-      if (!this.ready) this.ready = this.initialize();
-      await this.ready;
-      const [asset, batch] = await Promise.all([geometry(object.geometry), poses(this.hand.poses[object.id])]);
+      const [module] = await Promise.all([
+        engine(), ...this.hand.geometry.map(assets.binary),
+        assets.binary(object.geometry), assets.pose(this.hand, object, index)
+      ]);
       if (request !== this.sequence) return;
-      const grasp = batch.grasps[index];
-      if (!grasp || grasp.success !== true) throw new Error('Selected successful grasp is unavailable');
-      if (this.objectId !== object.id) {
-        if (this.objectGroup) this.scene.remove(this.objectGroup);
-        this.objectGroup = asset.scene.clone(true);
-        this.objectGroup.traverse(node => { if (node.isMesh) node.material = this.objectMaterial; });
-        this.scene.add(this.objectGroup);
-        this.objectId = object.id;
-      }
-      batch.links.forEach((name, i) => {
-        const node = this.handGroup.getObjectByName(name);
-        if (!node) throw new Error(`Missing geometry for ${name}`);
-        // Exported FK matrices are row-major; Three.js stores column-major.
-        node.matrixAutoUpdate = false;
-        node.matrix.fromArray(grasp.matrices[i]).transpose();
-        node.matrixWorldNeedsUpdate = true;
-      });
-      this.frame();
+      if (!this.view) this.view = new module.GraspView(this.hand, this.viewport, assets);
+      await this.view.update(object, index);
+      if (request !== this.sequence) return;
+      this.preview.hidden = true;
       this.status.hidden = true;
+      this.card.dataset.ready = 'true';
+      this.card.dataset.object = object.id;
+      this.card.dataset.grasp = String(index);
+      record();
     } catch (error) {
       if (request !== this.sequence) return;
-      this.status.textContent = '3D view unavailable. Reload the page or try a WebGL-enabled browser.';
-      this.status.hidden = false;
-      console.warn(error);
+      this.status.textContent = '3D could not load. Check your connection or WebGL support.';
+      this.retry.hidden = false;
+      console.warn(error.message);
+    } finally {
+      if (request === this.sequence) this.viewport.setAttribute('aria-busy', 'false');
     }
   }
-  frame() {
-    if (!this.objectGroup) return;
-    this.scene.updateMatrixWorld(true);
-    const bounds = new THREE.Box3().setFromObject(this.handGroup).union(new THREE.Box3().setFromObject(this.objectGroup));
-    const sphere = bounds.getBoundingSphere(new THREE.Sphere());
-    const vertical = THREE.MathUtils.degToRad(this.camera.fov)/2;
-    const horizontal = Math.atan(Math.tan(vertical)*this.camera.aspect);
-    const distance = sphere.radius / Math.sin(Math.min(vertical,horizontal)) * 1.12;
-    this.controls.target.copy(sphere.center);
-    this.camera.position.copy(sphere.center).add(new THREE.Vector3(1.5,-1.5,1).normalize().multiplyScalar(distance));
-    this.camera.lookAt(sphere.center);
-    this.controls.update();
-    this.render();
-  }
-  render() { if (this.renderer) this.renderer.render(this.scene, this.camera); }
+  frame() { this.view?.frame(); }
 }
 
 function createRow(catalog, split, title, selection) {
@@ -161,7 +114,7 @@ function createRow(catalog, split, title, selection) {
   row.dataset.split = split;
   row.append(element('h4','',title));
   const grid = element('div','grasp-grid');
-  const views = catalog.hands.filter(hand => hand.split === split).map(hand => new GraspView(hand));
+  const views = catalog.hands.filter(hand => hand.split === split).map(hand => new GraspCard(hand));
   views.forEach(view => grid.append(view.card));
   row.append(grid);
   let active = false;
@@ -223,9 +176,6 @@ function createGallery(catalog) {
   return gallery;
 }
 
-readJSON(dataURL('catalog.json')).then(catalog => {
-  root.replaceChildren(createGallery(catalog));
-}).catch(error => {
-  root.replaceChildren(element('p','loading-note','The interactive grasp data could not be loaded. Please reload the page.'));
-  console.warn(error);
-});
+root.replaceChildren(createGallery(catalog));
+metrics.uiMs = Math.round(performance.now());
+record();

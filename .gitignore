@@ -23,6 +23,8 @@
 !/viewer/
 /viewer/*
 !/viewer/grasp-viewer.js
+!/viewer/grasp-engine.js
+!/viewer/grasp-engine.bundle.js
 !/vendor/
 /vendor/*
 !/vendor/three/
@@ -40,3 +42,12 @@
 !/grasps/README.md
 !/grasps/geometry/
 !/grasps/poses/
+!/grasps/previews/
+/grasps/previews/*
+!/grasps/previews/manifest.json
+!/grasps/previews/allegro.png
+!/grasps/previews/barrett.png
+!/grasps/previews/shadowhand.png
+!/grasps/previews/apex_hand.png
+!/grasps/previews/leaphand.png
+!/grasps/previews/robotiq_3finger.png

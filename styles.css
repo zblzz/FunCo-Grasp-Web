@@ -86,7 +86,11 @@ figcaption { max-width:900px; margin:14px auto 0; font-size:16px; line-height:1.
 .grasp-viewport { height:295px; position:relative; overflow:hidden; }
 .grasp-viewport canvas { display:block; width:100%; height:100%; cursor:grab; touch-action:none; }
 .grasp-viewport canvas:active { cursor:grabbing; }
-.grasp-status { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:18px; font-size:14px; color:var(--muted); pointer-events:none; }
+.grasp-preview { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.grasp-preview[hidden],.grasp-retry[hidden] { display:none; }
+.grasp-card[data-ready=false] canvas { visibility:hidden; }
+.grasp-status { position:absolute; inset:auto 10px 9px; display:block; text-align:center; padding:5px 9px; border-radius:6px; background:#ffffffdf; font-size:12px; color:var(--muted); pointer-events:none; }
+.grasp-retry { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); border:1px solid #d5cddd; border-radius:8px; padding:9px 14px; background:white; color:#62566e; cursor:pointer; }
 .grasp-status[hidden] { display:none; }
 .grasp-card figcaption { display:flex; justify-content:center; align-items:center; gap:9px; margin:0; font-size:18px; font-weight:600; letter-spacing:-.015em; }
 .grasp-card figcaption::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--hand-ink); }

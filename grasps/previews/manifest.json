@@ -1,0 +1,12 @@
+{
+  "object": "contactdb+apple",
+  "index": 0,
+  "hands": {
+    "allegro": "c542709d43c462c9772a0354238db7a94bb3053f51676709e0445cb6e4487c31",
+    "barrett": "d014b9d0ce2fe0ccfefbacaa58c81cbf83812776b8b48457ae86b8b50db35dcd",
+    "shadowhand": "2b7aebd71c781180f7af6528a5a31667c8ac7d61036e01420de60e238dd047fe",
+    "apex_hand": "d6266ef991497611f68907c699f9f57ed499aff1c0ac7ed7f4c6d8b4c5c0aec6",
+    "leaphand": "8e0e75f44bc40ec6e8572a6d5ac03ab545c02b2d4636250cf77f00637a04bd17",
+    "robotiq_3finger": "fab493932b61874a295bb0215d8b2ba46fec510aa0987d44d8330b3379b33672"
+  }
+}

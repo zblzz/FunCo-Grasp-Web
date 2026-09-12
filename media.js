@@ -1,15 +1,11 @@
 // Shared by the repository page and the local build: no generated-only player.
-const mediaRelease = new URL(document.currentScript.src).search;
-fetch('media.json' + mediaRelease).then(response => {
-  if (!response.ok) throw new Error('Media configuration unavailable');
-  return response.json();
-}).then(config => {
+try {
+  const config = JSON.parse(document.querySelector('#media-config').textContent);
   document.querySelectorAll('[data-media]').forEach(slot => {
     const entry = config[slot.dataset.media];
     if (!entry?.src) return;
     const url = new URL(entry.src, document.baseURI);
     if (url.origin !== location.origin) throw new Error('Media must be hosted with the project');
-    url.search = mediaRelease;
     const video = document.createElement('video');
     video.controls = true;
     video.playsInline = true;
@@ -29,4 +25,4 @@ fetch('media.json' + mediaRelease).then(response => {
     slot.replaceChildren(video);
     slot.setAttribute('aria-label', entry.label);
   });
-}).catch(error => console.warn(error.message));
+} catch (error) { console.warn(error.message); }
