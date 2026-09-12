@@ -5,7 +5,7 @@ try {
     const entry = config[slot.dataset.media];
     if (!entry?.src) return;
     const url = new URL(entry.src, document.baseURI);
-    if (url.origin !== location.origin) throw new Error('Media must be hosted with the project');
+    if (url.origin !== new URL(document.baseURI).origin) throw new Error('Media must be hosted with the project');
     const video = document.createElement('video');
     video.controls = true;
     video.playsInline = true;

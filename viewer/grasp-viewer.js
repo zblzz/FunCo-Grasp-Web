@@ -1,9 +1,49 @@
 // Small, independent UI: Three.js never blocks the object/grasp controls.
+(() => {
+'use strict';
 const root = document.querySelector('#grasp-gallery-rows');
 const catalog = JSON.parse(document.querySelector('#grasp-catalog').textContent);
-const dataBase = new URL('../grasps/', import.meta.url);
+const siteBase = new URL('../', document.currentScript.src);
+const dataBase = new URL('grasps/', siteBase);
 const pending = new Map();
+const scripts = new Map();
+const attempts = new Map();
+const received = new Map();
 const timeoutMs = 30000;
+// The host intentionally gives documents an opaque origin. Classic scripts are
+// permitted by that sandbox; module imports and cross-origin fetch are not.
+// Only generated, versioned, local project payloads can be registered here.
+const payloadKeys = new Set(Object.values(catalog.payloads).map(entry => entry.key));
+window.FIRAGraspAssets = Object.freeze({register(key, payload) {
+  if (payloadKeys.has(key) && typeof payload === 'string') received.set(key, payload);
+}});
+function loadClassic(path, base, ready) {
+  const original = new URL(path, base).href;
+  if (!scripts.has(original)) {
+    const promise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      const url = new URL(original);
+      const attempt = attempts.get(original) || 0;
+      if (attempt) url.searchParams.set('retry', String(attempt));
+      script.async = true;
+      script.src = url.href;
+      function finish(error) {
+        clearTimeout(timer);
+        script.onload = script.onerror = null;
+        script.remove();
+        if (error) reject(error);
+        else { try { resolve(ready()); } catch (failure) { reject(failure); } }
+      }
+      const timer = setTimeout(() => finish(new Error('Grasp resource timed out')), timeoutMs);
+      script.onerror = () => finish(new Error('Grasp resource unavailable'));
+      script.onload = () => finish();
+      document.head.append(script);
+    });
+    scripts.set(original, promise);
+    promise.catch(() => { scripts.delete(original); attempts.set(original, (attempts.get(original) || 0) + 1); });
+  }
+  return scripts.get(original);
+}
 const metrics = {uiMs:null, firstModelMs:null, allModelsMs:null};
 function record() {
   const ready = [...root.querySelectorAll('.grasp-card')].filter(card => card.dataset.ready === 'true').length;
@@ -12,37 +52,44 @@ function record() {
   if (ready === 6 && metrics.allModelsMs === null) metrics.allModelsMs = now;
   root.dataset.performance = JSON.stringify({...metrics, ready});
 }
-function fetchAsset(path, type) {
+function readAsset(path, type) {
   const key = type + ':' + path;
   if (!pending.has(key)) {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), timeoutMs);
-    const promise = fetch(new URL(path, dataBase), {signal:controller.signal}).then(response => {
-      if (!response.ok) throw new Error('Grasp resource unavailable');
-      return type === 'json' ? response.json() : response.arrayBuffer();
-    }).finally(() => clearTimeout(timer));
+    const entry = catalog.payloads[path];
+    if (!entry) return Promise.reject(new Error('Grasp resource is not listed'));
+    if (typeof DecompressionStream !== 'function') return Promise.reject(new Error('Please use an up-to-date browser'));
+    const promise = loadClassic(entry.src, dataBase, () => {
+      const payload = received.get(entry.key);
+      if (!payload) throw new Error('Grasp payload was not registered');
+      received.delete(entry.key);
+      return payload;
+    }).then(async payload => {
+      const text = atob(payload);
+      const bytes = new Uint8Array(text.length);
+      for (let i=0;i<text.length;i++) bytes[i] = text.charCodeAt(i);
+      const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+      // This Response wraps an in-memory stream; it performs no network request.
+      const buffer = await new Response(stream).arrayBuffer();
+      if (buffer.byteLength !== entry.bytes) throw new Error('Incomplete grasp payload');
+      // The decoded asset is cached below; release the compressed script value.
+      scripts.delete(new URL(entry.src, dataBase).href);
+      return type === 'json' ? JSON.parse(new TextDecoder().decode(buffer)) : buffer;
+    });
     pending.set(key, promise);
-    promise.catch(() => pending.delete(key));
+    promise.catch(() => { pending.delete(key); scripts.delete(new URL(entry.src, dataBase).href); });
   }
   return pending.get(key);
 }
 const assets = {
-  binary:path => fetchAsset(path, 'binary'),
+  binary:path => readAsset(path, 'binary'),
   pose:(hand, object, index) => object.id === catalog.objects[0].id && index === 0
-    ? Promise.resolve(hand.initialPose) : fetchAsset(hand.poses[object.id], 'json')
+    ? Promise.resolve(hand.initialPose) : readAsset(hand.poses[object.id], 'json')
 };
-let enginePromise;
-let engineAttempt = 0;
 function engine() {
-  if (!enginePromise) {
-    const url = new URL(catalog.engine, new URL('../', import.meta.url));
-    if (engineAttempt++) url.searchParams.set('retry', String(engineAttempt));
-    let timer;
-    const deadline = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('3D engine timed out')), timeoutMs); });
-    enginePromise = Promise.race([import(url.href), deadline])
-      .finally(() => clearTimeout(timer)).catch(error => { enginePromise = null; throw error; });
-  }
-  return enginePromise;
+  return loadClassic(catalog.engine, siteBase, () => {
+    if (!window.FIRAGraspEngine?.GraspView) throw new Error('3D engine is unavailable');
+    return window.FIRAGraspEngine;
+  });
 }
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -98,7 +145,9 @@ class GraspCard {
       record();
     } catch (error) {
       if (request !== this.sequence) return;
-      this.status.textContent = '3D could not load. Check your connection or WebGL support.';
+      this.status.textContent = typeof DecompressionStream !== 'function'
+        ? 'Please update your browser to load the 3D view.'
+        : '3D could not load. Check your connection or WebGL support.';
       this.retry.hidden = false;
       console.warn(error.message);
     } finally {
@@ -179,3 +228,4 @@ function createGallery(catalog) {
 root.replaceChildren(createGallery(catalog));
 metrics.uiMs = Math.round(performance.now());
 record();
+})();

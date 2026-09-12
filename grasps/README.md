@@ -9,6 +9,7 @@ The gallery contains 10 selected successful grasps for each of 10 held-out objec
 - `geometry/` contains shared GLB visual meshes. Geometry is reused across grasp selections.
 - `poses/` contains the link transforms of the selected grasps. Coordinates are right-handed, Z-up, and in metres. Matrices are stored in row-major order.
 - `previews/` contains browser-rendered images of the default Apple grasp, plus a content manifest. They are temporary loading previews, not substitutes for interactive models.
+- `payloads/` contains generated, losslessly compressed copies of the GLB and pose files for the anonymous host's sandbox. These are transport files, not additional experiments. Keep them in the published repository; edit the originals and rebuild instead of editing these generated files.
 
 The poses use the saved Isaac joint configurations and the same CPU forward kinematics and visual meshes as the evaluation viewer. Both the saved result and trial CSV mark each selected sample as successful. The initial selection takes ten evenly spaced successes from repeat 0 in sample order; no new grasps are generated.
 
@@ -21,3 +22,5 @@ Edit the `repeat` and `sample` entries for the desired embodiment and object in 
 Geometry remains in the viewer's original coordinate frame. Camera orbiting changes only the view, not the saved grasp.
 
 The published HTML embeds the catalog and the first default pose directly from these files. Rebuild after changing exported data or media configuration so the embedded data and per-file content versions stay in sync. If the default pose or its geometry changes, the build disables its old preview until a matching preview is regenerated. The original selections and pose exports remain independently editable.
+
+The viewer uses self-hosted classic scripts and the browser's native gzip decompression. It does not require the anonymous host to allow cross-origin module imports or data requests. Use a current browser with WebGL support. A failed resource displays a retry control; the static previews are labeled as previews while loading.

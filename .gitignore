@@ -42,6 +42,7 @@
 !/grasps/README.md
 !/grasps/geometry/
 !/grasps/poses/
+!/grasps/payloads/
 !/grasps/previews/
 /grasps/previews/*
 !/grasps/previews/manifest.json
