@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "content": "site.content.json",
+  "resources": {
+    "paper": { "path": "assets/paper.pdf", "enabled": false },
+    "code": {
+      "url": "https://anonymous.4open.science/r/ICRA2027_FIRA-Grasp-B68E/README.md",
+      "ready": false
+    }
+  },
+  "figures": {
+    "alignment": { "path": "assets/intro1.png", "source": "img/intro1.pdf", "maxPixels": 2200 },
+    "overview": { "path": "assets/overview1.png", "source": "img/overview1.pdf", "maxPixels": 2800 },
+    "simulation": { "path": "assets/exe1.png", "source": "img/exe1.pdf", "maxPixels": 2600 }
+  },
+  "videos": {
+    "teaser": {
+      "path": "assets/video/teaser.mp4",
+      "enabled": false,
+      "title": "Project video",
+      "poster": null,
+      "autoplay": false,
+      "muted": true,
+      "loop": true,
+      "preload": "none"
+    },
+    "apex": {
+      "path": "assets/video/apex-real.mp4",
+      "enabled": false,
+      "title": "ApexHand real-world experiments",
+      "poster": null,
+      "autoplay": true,
+      "muted": true,
+      "loop": true,
+      "preload": "none"
+    },
+    "revo2": {
+      "path": "assets/video/revo2-real.mp4",
+      "enabled": false,
+      "title": "Revo2 real-world experiments",
+      "poster": null,
+      "autoplay": true,
+      "muted": true,
+      "loop": true,
+      "preload": "none"
+    }
+  },
+  "gallery": {
+    "catalog": "grasps/catalog.json",
+    "selection": "grasps/selection.json",
+    "defaultObject": "contactdb+apple",
+    "defaultGrasp": 1,
+    "poseOrder": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "poseOverrides": {},
+    "hands": ["allegro", "barrett", "shadowhand", "apex_hand", "leaphand", "robotiq_3finger"],
+    "objects": [
+      { "id": "contactdb+apple", "label": "Apple" },
+      { "id": "contactdb+camera", "label": "Camera" },
+      { "id": "contactdb+cylinder_medium", "label": "Cylinder medium" },
+      { "id": "contactdb+rubber_duck", "label": "Rubber duck" },
+      { "id": "contactdb+door_knob", "label": "Door knob" },
+      { "id": "contactdb+water_bottle", "label": "Water bottle" },
+      { "id": "ycb+baseball", "label": "Baseball" },
+      { "id": "ycb+pear", "label": "Pear" },
+      { "id": "ycb+potted_meat_can", "label": "Potted meat can" },
+      { "id": "ycb+tomato_soup_can", "label": "Tomato soup can" }
+    ]
+  }
+}

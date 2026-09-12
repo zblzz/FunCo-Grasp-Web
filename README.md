@@ -1,12 +1,12 @@
-# FIRA-Grasp
+# FunCo-Grasp
 
-**Functional Interaction Representation Alignment for Cross-Embodiment Dexterous Grasp Generation**
+**Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation**
 
 Anonymous project materials for ICRA 2027 review.
 
 ## Overview
 
-FIRA-Grasp aligns functional hand regions and their local interaction frames across robotic embodiments. A node–edge diffusion model generates Functional Node Poses, which are converted into joint configurations using fixed inverse kinematics.
+FunCo-Grasp establishes functional correspondences across heterogeneous hands through shared functional parts and canonical local frames. Conditioned on the hand representation and object geometry, a diffusion model generates the target spatial arrangement of the functional parts, which is converted into executable joint configurations via inverse kinematics.
 
 Adaptation to a new embodiment uses its geometry, kinematic model, and a one-time lightweight manual functional annotation. It does not require target-hand grasp demonstrations, fine-tuning, or learned retargeting.
 
@@ -14,7 +14,7 @@ Adaptation to a new embodiment uses its geometry, kinematic model, and a one-tim
 
 This repository contains the static project website, manuscript figures, the main experimental table, and an interactive gallery of 600 selected successful grasps. The page presents the abstract, pipeline overview, simulation results, and real-world video slots.
 
-The page entry is `index.html`, with images in `assets/` and independently managed grasp selections in `grasps/`. See `grasps/README.md` for the selection and pose format. `media.json` specifies optional project and real-world MP4 files. To view the files locally, serve this directory using a static HTTP server. No dependency installation or build step is required for the checked-in website; its viewer dependencies are self-hosted.
+The page entry is `index.html`, with images in `assets/` and independently managed grasp selections in `grasps/`. `site.config.json` centralizes figure paths, optional local paper/video paths, the anonymous repository link, and gallery display settings. `site.content.json` contains manuscript-derived text and table data. See `grasps/README.md` for the selection and pose format. To view the checked-in website, serve this directory using a static HTTP server; its viewer dependencies are self-hosted. Configuration changes need to be incorporated by the local maintenance build before publication; the browser intentionally reads the generated inline configuration rather than fetching JSON from the anonymous host.
 
 The simulated grasp visualization uses a shared object selector and ten grasp-index buttons for both rows: seen embodiments (Allegro, Barrett, ShadowHand) and unseen embodiments (ApexHand, LEAP, Robotiq-3F). Each hand has its own selected trial at each index; matching indices do not imply identical grasps across embodiments. Drag a model to rotate it, or scroll to zoom. On narrow screens, swipe each row to see the other embodiments.
 

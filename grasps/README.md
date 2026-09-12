@@ -17,6 +17,10 @@ The webpage shares object and selection-index controls across both embodiment ro
 
 ## Changing selections
 
+For the existing exported poses, edit `gallery` in `site.config.json`: `defaultObject` sets the opening object, `defaultGrasp` sets the opening displayed position (starting at 1), and `poseOrder` reorders or subsets the ten exported poses. For example, `[3,1,2,4,5,6,7,8,9,10]` displays the third saved pose first. `poseOverrides` can specify a different order for a particular hand and object; all overrides must have the same number of entries as `poseOrder`. The `hands` and `objects` lists control the visible selections and their order. Rebuild after editing. These display settings never rewrite the experiment data.
+
+To select a trial that is not among the ten exported poses:
+
 Edit the `repeat` and `sample` entries for the desired embodiment and object in `selection.json`, then regenerate the corresponding pose exports from the saved evaluation results. Changing this list alone does not create new pose data. Keep ten distinct successful trials per group. The export check rejects failed or missing trials and verifies that the displayed poses match the selection list.
 
 Geometry remains in the viewer's original coordinate frame. Camera orbiting changes only the view, not the saved grasp.

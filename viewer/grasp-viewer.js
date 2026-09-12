@@ -4,7 +4,7 @@
 const root = document.querySelector('#grasp-gallery-rows');
 const catalog = JSON.parse(document.querySelector('#grasp-catalog').textContent);
 const siteBase = new URL('../', document.currentScript.src);
-const dataBase = new URL('grasps/', siteBase);
+const dataBase = new URL(catalog.dataRoot, siteBase);
 const pending = new Map();
 const scripts = new Map();
 const attempts = new Map();
@@ -49,7 +49,7 @@ function record() {
   const ready = [...root.querySelectorAll('.grasp-card')].filter(card => card.dataset.ready === 'true').length;
   const now = Math.round(performance.now());
   if (ready && metrics.firstModelMs === null) metrics.firstModelMs = now;
-  if (ready === 6 && metrics.allModelsMs === null) metrics.allModelsMs = now;
+  if (ready === catalog.hands.length && metrics.allModelsMs === null) metrics.allModelsMs = now;
   root.dataset.performance = JSON.stringify({...metrics, ready});
 }
 function readAsset(path, type) {
@@ -80,10 +80,21 @@ function readAsset(path, type) {
   }
   return pending.get(key);
 }
+const displayPoses = new Map();
 const assets = {
   binary:path => readAsset(path, 'binary'),
-  pose:(hand, object, index) => object.id === catalog.objects[0].id && index === 0
-    ? Promise.resolve(hand.initialPose) : readAsset(hand.poses[object.id], 'json')
+  pose:(hand, object, index) => {
+    if (object.id === catalog.initialObject && index === catalog.initialGrasp) return Promise.resolve(hand.initialPose);
+    const key = hand.id + ':' + object.id;
+    if (!displayPoses.has(key)) {
+      const promise = readAsset(hand.poses[object.id], 'json').then(batch => ({
+        ...batch, grasps:hand.poseOrder[object.id].map(i => batch.grasps[i])
+      }));
+      displayPoses.set(key, promise);
+      promise.catch(() => displayPoses.delete(key));
+    }
+    return displayPoses.get(key);
+  }
 };
 function engine() {
   return loadClassic(catalog.engine, siteBase, () => {
@@ -105,9 +116,9 @@ class GraspCard {
     this.card.dataset.ready = 'false';
     this.viewport = element('div', 'grasp-viewport');
     this.preview = element('img', 'grasp-preview');
-    if (hand.preview) this.preview.src = new URL(hand.preview, dataBase).href;
+    if (hand.preview) this.preview.src = new URL(hand.preview, siteBase).href;
     else this.preview.hidden = true;
-    this.preview.alt = `${hand.label}, Apple, grasp 1 — static preview while the interactive model loads.`;
+    this.preview.alt = `${hand.label}, ${catalog.objects.find(o => o.id === catalog.initialObject).label}, grasp ${catalog.initialGrasp+1} — static preview while the interactive model loads.`;
     this.preview.width = 329; this.preview.height = 295;
     this.preview.loading = 'lazy'; this.preview.decoding = 'async'; this.preview.fetchPriority = 'low';
     this.status = element('span', 'grasp-status', 'Loading 3D…');
@@ -127,7 +138,7 @@ class GraspCard {
     this.status.hidden = false; this.status.textContent = 'Loading 3D…';
     this.retry.hidden = true;
     // The preview is the actual default selection, never a different object/pose.
-    this.preview.hidden = !this.hand.preview || object.id !== catalog.objects[0].id || index !== 0;
+    this.preview.hidden = !this.hand.preview || object.id !== catalog.initialObject || index !== catalog.initialGrasp;
     try {
       const [module] = await Promise.all([
         engine(), ...this.hand.geometry.map(assets.binary),
@@ -179,45 +190,59 @@ function createRow(catalog, split, title, selection) {
 }
 
 function createGallery(catalog) {
-  const selection = {object:catalog.objects[0], index:0};
+  const selection = {object:catalog.objects.find(o => o.id === catalog.initialObject), index:catalog.initialGrasp};
   const gallery = element('div', 'gallery-stage');
   const objectBar = element('div', 'object-bar');
-  const objectLabel = element('span', 'control-label', 'Object');
-  objectLabel.id = 'gallery-object-label';
-  const objects = element('div', 'object-options');
-  objects.setAttribute('role', 'group'); objects.setAttribute('aria-labelledby', objectLabel.id);
-  const objectButtons = catalog.objects.map(object => {
-    const button = element('button', 'object-choice', object.label);
-    button.type = 'button'; button.dataset.object = object.id;
-    button.addEventListener('click', () => { selection.object = object; update(); });
-    objects.append(button); return button;
+  const objectLabel = element('label', 'control-label', 'Object');
+  objectLabel.htmlFor = 'gallery-object';
+  const picker = element('div', 'object-picker');
+  const objects = element('select', 'object-select');
+  objects.id = 'gallery-object';
+  catalog.objects.forEach(object => {
+    const option = element('option', '', object.label); option.value = object.id;
+    objects.append(option);
   });
-  objectBar.append(objectLabel, objects);
+  objects.addEventListener('change', () => { selection.object = catalog.objects.find(o => o.id === objects.value); update(); });
+  const objectPrevious = element('button', 'object-step', '←');
+  const objectNext = element('button', 'object-step', '→');
+  for (const [button, label, step] of [[objectPrevious, 'Previous object', -1], [objectNext, 'Next object', 1]]) {
+    button.type = 'button'; button.setAttribute('aria-label', label);
+    button.disabled = catalog.objects.length === 1;
+    button.addEventListener('click', () => {
+      selection.object = catalog.objects[(catalog.objects.indexOf(selection.object)+step+catalog.objects.length)%catalog.objects.length]; update();
+    });
+  }
+  const objectCount = element('span', 'object-count'); objectCount.setAttribute('aria-hidden', 'true');
+  picker.append(objectPrevious, objects, objectNext);
+  objectBar.append(objectLabel, picker, objectCount);
 
-  const rows = [createRow(catalog,'seen','Seen embodiments',selection), createRow(catalog,'unseen','Unseen embodiments',selection)];
+  const rows = [['seen','Seen embodiments'],['unseen','Unseen embodiments']]
+    .filter(([split]) => catalog.hands.some(hand => hand.split === split))
+    .map(([split,title]) => createRow(catalog,split,title,selection));
   const navigation = element('div', 'grasp-bar');
   const label = element('span', 'control-label', 'Grasp'); label.id = 'gallery-grasp-label';
   const numbers = element('div','grasp-options');
   numbers.setAttribute('role','group'); numbers.setAttribute('aria-labelledby',label.id);
   const previous = element('button','grasp-step','←'); previous.type = 'button'; previous.setAttribute('aria-label','Previous grasp');
   const next = element('button','grasp-step','→'); next.type = 'button'; next.setAttribute('aria-label','Next grasp');
-  const graspButtons = Array.from({length:10}, (_,index) => {
+  const graspButtons = Array.from({length:catalog.graspCount}, (_,index) => {
     const button = element('button','grasp-choice',String(index+1).padStart(2,'0'));
-    button.type = 'button'; button.setAttribute('aria-label',`Grasp ${index+1} of 10`);
+    button.type = 'button'; button.setAttribute('aria-label',`Grasp ${index+1} of ${catalog.graspCount}`);
     button.addEventListener('click',() => { selection.index = index; update(); });
     return button;
   });
   numbers.append(previous,...graspButtons,next);
-  previous.addEventListener('click',() => { selection.index = (selection.index+9)%10; update(); });
-  next.addEventListener('click',() => { selection.index = (selection.index+1)%10; update(); });
+  previous.addEventListener('click',() => { selection.index = (selection.index+catalog.graspCount-1)%catalog.graspCount; update(); });
+  next.addEventListener('click',() => { selection.index = (selection.index+1)%catalog.graspCount; update(); });
   const reset = element('button','reset-view','Reset views'); reset.type = 'button';
   reset.addEventListener('click',() => rows.forEach(row => row.reset()));
   navigation.append(label,numbers,reset);
   const announcement = element('span','sr-only'); announcement.setAttribute('role','status');
   function update() {
-    objectButtons.forEach(button => button.setAttribute('aria-pressed',String(button.dataset.object === selection.object.id)));
+    objects.value = selection.object.id;
+    objectCount.textContent = `${String(catalog.objects.indexOf(selection.object)+1).padStart(2,'0')} / ${String(catalog.objects.length).padStart(2,'0')}`;
     graspButtons.forEach((button,index) => button.setAttribute('aria-pressed',String(index === selection.index)));
-    announcement.textContent = `${selection.object.label}, grasp ${selection.index+1} of 10, across six embodiments.`;
+    announcement.textContent = `${selection.object.label}, grasp ${selection.index+1} of ${catalog.graspCount}, across ${catalog.hands.length} embodiments.`;
     rows.forEach(row => row.update());
   }
   gallery.append(objectBar,...rows.map(row => row.node),navigation,announcement);

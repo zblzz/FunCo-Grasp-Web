@@ -1,0 +1,300 @@
+{
+  "method": "FunCo-Grasp",
+  "title": "Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation",
+  "abstract": "Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Existing approaches often lack explicit correspondences between structurally different hand regions that play similar functional roles in a grasp, a concept we refer to as functional correspondence. Consequently, their models tend to learn hand-specific interaction patterns rather than transferable grasp knowledge, limiting generalization to unseen embodiments. To address this limitation, we introduce FunCo-Grasp, which establishes functional correspondences across heterogeneous hand embodiments. Specifically, it aligns each hand to a canonical functional schema by mapping its physical links to shared functional parts and expressing them in canonical local frames. This alignment provides a consistent representation for inter-part and hand–object interactions, allowing the model to learn transferable grasp knowledge across hands. Conditioned on the aligned hand representation and object geometry, a diffusion model generates the target spatial arrangement of the functional parts, which are then converted into an executable joint configuration. Adapting FunCo-Grasp to an unseen hand requires only its geometric and kinematic models and a one-time lightweight functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. Simulation experiments on the filtered CMapDataset show that FunCo-Grasp achieves average success rates of 92.40% on three seen hands and 74.02% on four unseen hands on held-out objects. In direct sim-to-real experiments, the same model achieves an overall success rate of 76.00% on two unseen real hands without real-world training. These results demonstrate the effectiveness of FunCo-Grasp in transferring grasp knowledge to unseen hands.",
+  "figures": {
+    "alignment": "Functional Interaction Representation Alignment. A lightweight manual functional annotation establishes (a) cross-hand functional correspondence and (b) canonical interaction frames, enabling (c) grasp transfer from training to unseen embodiments.",
+    "overview": "FunCo-Grasp establishes functional correspondences across heterogeneous hands through three sequential stages. Cross-Embodiment Functional Correspondence first maps hand regions to shared functional parts according to their grasping roles and expresses them in canonical local frames. Hand and Object Encoding then integrates these parts with hand-specific geometry and kinematics, while extracting geometric features from the object. Finally, Functional-Part-Based Grasp Generation uses the aligned hand representation and object geometry to generate the target spatial arrangement of the functional parts and converts it into executable joint configurations via inverse kinematics. Together, these stages enable cross-embodiment dexterous grasp generation without target-hand grasp data, fine-tuning, or learned retargeting."
+  },
+  "tableCaption": "Grasp success on held-out objects across seen and unseen embodiments, and inference time on seen embodiments. Red and yellow mark the best and second-best values. †UniMorphGrasp follows its published protocol; code was unavailable at evaluation. -- denotes unavailable results.",
+  "rows": [
+    {
+      "id": "gendex",
+      "label": "GenDexGrasp",
+      "ours": false,
+      "reported": false,
+      "cells": [
+        {
+          "value": "67.00",
+          "rank": null
+        },
+        {
+          "value": "50.00",
+          "rank": null
+        },
+        {
+          "value": "53.30",
+          "rank": null
+        },
+        {
+          "value": "56.77",
+          "rank": null
+        },
+        {
+          "value": "15.17",
+          "rank": null
+        },
+        {
+          "value": "29.37",
+          "rank": null
+        },
+        {
+          "value": "25.33",
+          "rank": null
+        },
+        {
+          "value": "31.00",
+          "rank": null
+        },
+        {
+          "value": "25.22",
+          "rank": null
+        },
+        {
+          "value": "18.77",
+          "rank": null
+        }
+      ]
+    },
+    {
+      "id": "cedex",
+      "label": "CEDex",
+      "ours": false,
+      "reported": false,
+      "cells": [
+        {
+          "value": "92.66",
+          "rank": "second"
+        },
+        {
+          "value": "85.16",
+          "rank": null
+        },
+        {
+          "value": "86.43",
+          "rank": null
+        },
+        {
+          "value": "88.08",
+          "rank": null
+        },
+        {
+          "value": "46.20",
+          "rank": "second"
+        },
+        {
+          "value": "62.00",
+          "rank": "second"
+        },
+        {
+          "value": "41.50",
+          "rank": "second"
+        },
+        {
+          "value": "86.30",
+          "rank": "first"
+        },
+        {
+          "value": "59.00",
+          "rank": "second"
+        },
+        {
+          "value": "12.52",
+          "rank": null
+        }
+      ]
+    },
+    {
+      "id": "dro",
+      "label": "D(R,O) Grasp",
+      "ours": false,
+      "reported": false,
+      "cells": [
+        {
+          "value": "89.90",
+          "rank": null
+        },
+        {
+          "value": "88.30",
+          "rank": null
+        },
+        {
+          "value": "77.80",
+          "rank": null
+        },
+        {
+          "value": "85.33",
+          "rank": null
+        },
+        {
+          "value": "24.20",
+          "rank": null
+        },
+        {
+          "value": "58.60",
+          "rank": null
+        },
+        {
+          "value": "4.80",
+          "rank": null
+        },
+        {
+          "value": "64.90",
+          "rank": null
+        },
+        {
+          "value": "38.13",
+          "rank": null
+        },
+        {
+          "value": "0.75",
+          "rank": null
+        }
+      ]
+    },
+    {
+      "id": "tro",
+      "label": "T(R,O) Grasp",
+      "ours": false,
+      "reported": false,
+      "cells": [
+        {
+          "value": "89.10",
+          "rank": null
+        },
+        {
+          "value": "91.60",
+          "rank": "second"
+        },
+        {
+          "value": "92.50",
+          "rank": null
+        },
+        {
+          "value": "91.07",
+          "rank": null
+        },
+        {
+          "value": "1.30",
+          "rank": null
+        },
+        {
+          "value": "4.00",
+          "rank": null
+        },
+        {
+          "value": "0.10",
+          "rank": null
+        },
+        {
+          "value": "42.40",
+          "rank": null
+        },
+        {
+          "value": "11.95",
+          "rank": null
+        },
+        {
+          "value": "0.21",
+          "rank": "second"
+        }
+      ]
+    },
+    {
+      "id": "unimorph",
+      "label": "UniMorphGrasp",
+      "ours": false,
+      "reported": true,
+      "cells": [
+        {
+          "value": "90.30",
+          "rank": null
+        },
+        {
+          "value": "93.00",
+          "rank": "first"
+        },
+        {
+          "value": "98.80",
+          "rank": "first"
+        },
+        {
+          "value": "94.00",
+          "rank": "first"
+        },
+        {
+          "value": "--",
+          "rank": null
+        },
+        {
+          "value": "--",
+          "rank": null
+        },
+        {
+          "value": "--",
+          "rank": null
+        },
+        {
+          "value": "--",
+          "rank": null
+        },
+        {
+          "value": "--",
+          "rank": null
+        },
+        {
+          "value": "--",
+          "rank": null
+        }
+      ]
+    },
+    {
+      "id": "fira",
+      "label": "FunCo-Grasp",
+      "ours": true,
+      "reported": false,
+      "cells": [
+        {
+          "value": "97.20",
+          "rank": "first"
+        },
+        {
+          "value": "86.20",
+          "rank": null
+        },
+        {
+          "value": "93.80",
+          "rank": "second"
+        },
+        {
+          "value": "92.40",
+          "rank": "second"
+        },
+        {
+          "value": "68.20",
+          "rank": "first"
+        },
+        {
+          "value": "72.73",
+          "rank": "first"
+        },
+        {
+          "value": "80.40",
+          "rank": "first"
+        },
+        {
+          "value": "74.73",
+          "rank": "second"
+        },
+        {
+          "value": "74.02",
+          "rank": "first"
+        },
+        {
+          "value": "0.16",
+          "rank": "first"
+        }
+      ]
+    }
+  ]
+}

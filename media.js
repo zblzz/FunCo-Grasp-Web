@@ -9,12 +9,13 @@ try {
     const video = document.createElement('video');
     video.controls = true;
     video.playsInline = true;
-    video.loop = true;
-    video.preload = 'metadata';
+    video.loop = entry.loop;
+    video.muted = entry.muted;
+    video.preload = entry.preload;
+    if(entry.poster) video.poster = new URL(entry.poster, document.baseURI).href;
     video.setAttribute('aria-label', entry.label);
     // Match the real-world MP4 loops in the reference, while retaining controls.
-    if (slot.dataset.media !== 'teaser') {
-      video.muted = true;
+    if (entry.autoplay && entry.muted) {
       video.autoplay = !matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
     const source = document.createElement('source');
