@@ -24,6 +24,7 @@ try {
     source.addEventListener('error', () => { slot.replaceChildren(Object.assign(document.createElement('p'), {textContent:'Video could not be loaded.'})); });
     video.append(source);
     slot.replaceChildren(video);
+    slot.classList.add('has-video');
     slot.setAttribute('aria-label', entry.label);
   });
 } catch (error) { console.warn(error.message); }

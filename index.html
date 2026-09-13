@@ -3,34 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#faf9f5">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>FunCo-Grasp | Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation</title>
   <meta name="description" content="Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation. Anonymous project page.">
   <link rel="icon" href="favicon.svg?v=5d4c2597812b" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=fe04fc2b5d43">
-  <script src="site.js?v=33a8d511467f" defer></script>
-  <script src="media.js?v=96c8f5ec250f" defer></script>
-  <script src="viewer/grasp-viewer.js?v=99b655c794a2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=fcb4dbe9733f">
+  <script src="site.js?v=f011491486e5" defer></script>
+  <script src="media.js?v=739190146769" defer></script>
+  <script src="viewer/grasp-viewer.js?v=e54ffba74fb9" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <div class="nav-inner wrap">
+      <a class="brand" href="#top" aria-label="FunCo-Grasp, back to top"><span data-brand><b>FunCo</b>-Grasp</span></a>
+      <nav class="desktop-nav" aria-label="Page sections">
+        <a href="#abstract" data-section-link>Abstract</a><a href="#method" data-section-link>Pipeline</a><a href="#simulation" data-section-link>Results</a><a href="#grasps" data-section-link>Grasps</a><a href="#real-world" data-section-link>Real world</a>
+      </nav>
+      <details class="mobile-nav">
+        <summary>Contents <span aria-hidden="true">＋</span></summary>
+        <nav aria-label="Mobile page sections"><a href="#abstract" data-section-link>Abstract</a><a href="#method" data-section-link>Pipeline</a><a href="#simulation" data-section-link>Results</a><a href="#grasps" data-section-link>Grasps</a><a href="#real-world" data-section-link>Real world</a></nav>
+      </details>
+    </div>
+    <progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+  </header>
+  <aside class="contents-sidebar" aria-labelledby="contents-heading">
+    <h2 id="contents-heading">Contents</h2>
+    <nav aria-label="Contents">
+      <ul>
+        <li><a href="#abstract" data-section-link>Abstract</a></li>
+        <li><a href="#method" data-section-link>Pipeline Overview</a></li>
+        <li><a href="#simulation" data-section-link>Simulation Results</a></li>
+        <li><a href="#grasps" data-section-link>Simulated Grasp Visualization</a></li>
+        <li><a href="#real-world" data-section-link>Real-World Experiments</a></li>
+      </ul>
+    </nav>
+  </aside>
   <main id="main">
     <header class="publication-header wrap" id="top">
-      <h1><span class="method-name">Function beyond Form:</span> Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation</h1>
+      <h1><span class="title-lead">Function beyond Form<span class="sr-only">:</span></span> <span class="title-detail">Functional Correspondence for <span class="keep-together">Cross-Embodiment</span> Dexterous Grasp Generation</span></h1>
       <p class="publication-authors">Anonymous Authors</p>
       <p class="publication-venue">ICRA 2027 · Anonymous review version</p>
       <nav class="publication-links" aria-label="Project resources">
         <button class="resource-button" id="paper-link" type="button" disabled aria-label="Paper PDF, not yet uploaded"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6"/></svg><span>Paper</span><small>Pending</small></button>
         <a class="resource-button" id="code-link" href="https://anonymous.4open.science/r/ICRA2027_FIRA-Grasp-B68E/README.md" target="_blank" rel="noopener noreferrer" aria-label="Anonymous code repository; implementation release pending"><svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"/></svg><span>Code</span><small>Pending</small></a>
+        <a class="resource-button resource-explore" href="#grasps">Explore grasps <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
 
     <section class="teaser wrap" id="video" aria-label="Project video">
       <div class="media-slot" data-media="teaser" aria-label="Project video placeholder">
-        <div class="media-placeholder"><span class="play-mark" aria-hidden="true">▷</span><span>Project video</span><small>Video coming soon</small></div>
+        <div class="media-placeholder teaser-cover"><div class="cover-heading"><span class="play-mark" aria-hidden="true">▷</span><span>Project video</span><small>Coming soon</small></div><div class="teaser-preview-grid"><figure><img src="grasps/previews/allegro.png?v=4dce56f7a9a2" width="329" height="295" alt="Allegro simulated grasp preview" decoding="async"><figcaption>Allegro</figcaption></figure><figure><img src="grasps/previews/barrett.png?v=44df1ec48fbe" width="329" height="295" alt="Barrett simulated grasp preview" decoding="async"><figcaption>Barrett</figcaption></figure><figure><img src="grasps/previews/shadowhand.png?v=a97b4900751a" width="329" height="295" alt="ShadowHand simulated grasp preview" decoding="async"><figcaption>ShadowHand</figcaption></figure><figure><img src="grasps/previews/apex_hand.png?v=2f8db9565029" width="329" height="295" alt="ApexHand simulated grasp preview" decoding="async"><figcaption>ApexHand</figcaption></figure><figure><img src="grasps/previews/leaphand.png?v=d1377ff99e56" width="329" height="295" alt="LEAP simulated grasp preview" decoding="async"><figcaption>LEAP</figcaption></figure><figure><img src="grasps/previews/robotiq_3finger.png?v=7feb8f6dc8a1" width="329" height="295" alt="Robotiq-3F simulated grasp preview" decoding="async"><figcaption>Robotiq-3F</figcaption></figure></div><p class="cover-note">Static simulation previews · Project video not yet uploaded</p></div>
       </div>
     </section>
 
@@ -91,7 +117,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><p>FunCo-Grasp · Anonymous review version</p><a href="assets/THIRD_PARTY_NOTICES.txt">Third-party notices</a></footer>
+  <footer class="footer"><p>FunCo-Grasp · Anonymous review version</p><div class="footer-links"><a href="assets/THIRD_PARTY_NOTICES.txt">Third-party notices</a><a href="#top">Back to top ↑</a></div></footer>
   <dialog id="figure-dialog" aria-label="Enlarged paper figure"><button type="button" class="dialog-close" aria-label="Close enlarged figure">Close ×</button><img id="dialog-image" alt=""><p id="dialog-caption"></p></dialog>
 </body>
 </html>

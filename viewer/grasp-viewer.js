@@ -245,7 +245,7 @@ function createGallery(catalog) {
     announcement.textContent = `${selection.object.label}, grasp ${selection.index+1} of ${catalog.graspCount}, across ${catalog.hands.length} embodiments.`;
     rows.forEach(row => row.update());
   }
-  gallery.append(objectBar,...rows.map(row => row.node),navigation,announcement);
+  gallery.append(objectBar,navigation,...rows.map(row => row.node),announcement);
   update();
   return gallery;
 }

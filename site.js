@@ -39,3 +39,42 @@ if (dialog && typeof dialog.showModal === 'function') {
   });
   dialog.addEventListener('close', () => trigger?.focus());
 }
+
+// Section navigation and subtle, one-time entrances. All content remains visible
+// if JavaScript is unavailable; no permanent rendering loop or external library.
+const menu = document.querySelector('.mobile-nav');
+const sectionLinks = [...document.querySelectorAll('[data-section-link]')];
+const sections = [...new Set(sectionLinks.map(link => link.hash))].map(hash => document.querySelector(hash)).filter(Boolean);
+const progress = document.querySelector('.reading-progress');
+let navigationQueued = false;
+function updateNavigation() {
+  navigationQueued = false;
+  let active = '';
+  for (const section of sections) if (section.getBoundingClientRect().top <= 145) active = '#'+section.id;
+  // A short final section may never reach the header offset before the page ends.
+  if (scrollY > 0 && scrollY + innerHeight >= document.documentElement.scrollHeight - 2 && sections.length) active = '#'+sections.at(-1).id;
+  for (const link of sectionLinks) {
+    if (link.hash === active) link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+  }
+  const length = document.documentElement.scrollHeight-innerHeight;
+  if (progress) progress.value = length > 0 ? Math.min(100,Math.max(0,scrollY/length*100)) : 0;
+}
+function queueNavigation() {
+  if (!navigationQueued) { navigationQueued = true; requestAnimationFrame(updateNavigation); }
+}
+addEventListener('scroll',queueNavigation,{passive:true});
+addEventListener('resize',queueNavigation,{passive:true});
+addEventListener('load',queueNavigation,{once:true});
+queueNavigation();
+menu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{ menu.open=false; }));
+menu?.addEventListener('keydown',event=>{
+  if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus();}
+});
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+if ('IntersectionObserver' in window && !reduceMotion.matches) {
+  const entrance = new IntersectionObserver(entries=>{
+    for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('has-entered');entrance.unobserve(entry.target);}
+  },{threshold:.06});
+  document.querySelectorAll('.paper-figure,.results-table-block,.real-videos,.grasp-gallery').forEach(node=>entrance.observe(node));
+}
