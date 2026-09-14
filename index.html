@@ -6,14 +6,15 @@
   <meta name="theme-color" content="#faf9f5">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>FunCo-Grasp | Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation</title>
   <meta name="description" content="Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation. Anonymous project page.">
   <link rel="icon" href="favicon.svg?v=5d4c2597812b" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=fcb4dbe9733f">
+  <link rel="stylesheet" href="styles.css?v=66dce09406ab">
+  <link rel="stylesheet" href="fonts.css?v=fdddf0c91461">
   <script src="site.js?v=f011491486e5" defer></script>
   <script src="media.js?v=739190146769" defer></script>
-  <script src="viewer/grasp-viewer.js?v=e54ffba74fb9" defer></script>
+  <script src="viewer/grasp-viewer.js?v=950ee56ef98c" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -21,11 +22,11 @@
     <div class="nav-inner wrap">
       <a class="brand" href="#top" aria-label="FunCo-Grasp, back to top"><span data-brand><b>FunCo</b>-Grasp</span></a>
       <nav class="desktop-nav" aria-label="Page sections">
-        <a href="#abstract" data-section-link>Abstract</a><a href="#method" data-section-link>Pipeline</a><a href="#simulation" data-section-link>Results</a><a href="#grasps" data-section-link>Grasps</a><a href="#real-world" data-section-link>Real world</a>
+        <a href="#abstract" data-section-link>Abstract</a><a href="#method" data-section-link>Pipeline</a><a href="#simulation" data-section-link>Results</a><a href="#grasps" data-section-link>Grasps</a><a href="#real-world" data-section-link>Real-World Experiments</a>
       </nav>
       <details class="mobile-nav">
         <summary>Contents <span aria-hidden="true">＋</span></summary>
-        <nav aria-label="Mobile page sections"><a href="#abstract" data-section-link>Abstract</a><a href="#method" data-section-link>Pipeline</a><a href="#simulation" data-section-link>Results</a><a href="#grasps" data-section-link>Grasps</a><a href="#real-world" data-section-link>Real world</a></nav>
+        <nav aria-label="Mobile page sections"><a href="#abstract" data-section-link>Abstract</a><a href="#method" data-section-link>Pipeline</a><a href="#simulation" data-section-link>Results</a><a href="#grasps" data-section-link>Grasps</a><a href="#real-world" data-section-link>Real-World Experiments</a></nav>
       </details>
     </div>
     <progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
@@ -63,21 +64,21 @@
     <section class="abstract-section" id="abstract" aria-labelledby="abstract-title">
       <div class="wrap narrow">
         <h2 id="abstract-title">Abstract</h2>
-        <p>Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Existing approaches often lack explicit correspondences between structurally different hand regions that play similar functional roles in a grasp, a concept we refer to as functional correspondence. Consequently, their models tend to learn hand-specific interaction patterns rather than transferable grasp knowledge, limiting generalization to unseen embodiments. To address this limitation, we introduce FunCo-Grasp, which establishes functional correspondences across heterogeneous hand embodiments. Specifically, it aligns each hand to a canonical functional schema by mapping its physical links to shared functional parts and expressing them in canonical local frames. This alignment provides a consistent representation for inter-part and hand–object interactions, allowing the model to learn transferable grasp knowledge across hands. Conditioned on the aligned hand representation and object geometry, a diffusion model generates the target spatial arrangement of the functional parts, which are then converted into an executable joint configuration. Adapting FunCo-Grasp to an unseen hand requires only its geometric and kinematic models and a one-time lightweight functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. Simulation experiments on the filtered CMapDataset show that FunCo-Grasp achieves average success rates of 92.40% on three seen hands and 74.02% on four unseen hands on held-out objects. In direct sim-to-real experiments, the same model achieves an overall success rate of 76.00% on two unseen real hands without real-world training. These results demonstrate the effectiveness of FunCo-Grasp in transferring grasp knowledge to unseen hands.</p>
+        <p>Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Existing approaches often lack explicit correspondences between structurally different hand regions that play similar functional roles in a grasp, a concept we refer to as functional correspondence. Consequently, their models tend to learn hand-specific interaction patterns rather than transferable grasp knowledge, limiting generalization to unseen hands. To address this limitation, we introduce FunCo-Grasp, which establishes functional correspondences across heterogeneous hand embodiments. Specifically, it aligns each hand to a canonical functional schema by mapping its physical links to shared functional parts and expressing them in canonical local frames. This alignment provides a consistent representation for inter-part and hand–object interactions, allowing the model to learn transferable grasp knowledge across hands. Conditioned on the aligned hand representation and object geometry, a diffusion model generates the target spatial arrangement of the functional parts, which are then converted into an executable joint configuration. Adapting FunCo-Grasp to an unseen hand requires only its geometric and kinematic models and a one-time lightweight functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. In simulation on held-out objects from the filtered CMapDataset, FunCo-Grasp achieves average success rates of 92.40% on three seen hands and 74.02% on four unseen hands. In direct sim-to-real experiments, the same model achieves an overall success rate of 76.00% on two unseen hands without real-world training. These results demonstrate the effectiveness of FunCo-Grasp in transferring grasp knowledge to unseen hands.</p>
       </div>
     </section>
 
     <section class="section wrap" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Pipeline Overview</h2>
-      <figure class="paper-figure intro-figure" data-figure="alignment"><a class="figure-link" href="assets/intro1.png?v=f0a72adf5760" data-lightbox aria-label="Enlarge alignment figure"><img src="assets/intro1.png?v=f0a72adf5760" width="2022" height="2200" loading="lazy" alt="Functional parts, canonical local frames, and cross-embodiment grasp generation."></a>
-        <figcaption>Functional Interaction Representation Alignment. A lightweight manual functional annotation establishes (a) cross-hand functional correspondence and (b) canonical interaction frames, enabling (c) grasp transfer from training to unseen embodiments.</figcaption></figure>
-      <figure class="paper-figure" data-figure="overview"><a class="figure-link" href="assets/overview1.png?v=dfaa306eca19" data-lightbox aria-label="Enlarge overview figure"><img src="assets/overview1.png?v=dfaa306eca19" width="2800" height="1438" loading="lazy" alt="FunCo-Grasp pipeline overview."></a>
-        <figcaption>FunCo-Grasp establishes functional correspondences across heterogeneous hands through three sequential stages. Cross-Embodiment Functional Correspondence first maps hand regions to shared functional parts according to their grasping roles and expresses them in canonical local frames. Hand and Object Encoding then integrates these parts with hand-specific geometry and kinematics, while extracting geometric features from the object. Finally, Functional-Part-Based Grasp Generation uses the aligned hand representation and object geometry to generate the target spatial arrangement of the functional parts and converts it into executable joint configurations via inverse kinematics. Together, these stages enable cross-embodiment dexterous grasp generation without target-hand grasp data, fine-tuning, or learned retargeting.</figcaption></figure>
+      <figure class="paper-figure intro-figure" data-figure="alignment"><a class="figure-link" href="assets/intro1.png?v=0eb993fd1071" data-lightbox aria-label="Enlarge alignment figure"><img src="assets/intro1.png?v=0eb993fd1071" width="2022" height="2200" loading="lazy" alt="Functional parts, canonical local frames, and cross-embodiment grasp generation."></a>
+        <figcaption>Functional-Part-Based Hand Alignment. Top: the canonical functional schema and cross-hand functional correspondences established through a one-time lightweight functional annotation. (a) Shared part types. (b) Canonical forward, closing, and lateral axes. (c) Grasp transfer from seen to unseen hands.</figcaption></figure>
+      <figure class="paper-figure" data-figure="overview"><a class="figure-link" href="assets/overview1.png?v=e137e80684e3" data-lightbox aria-label="Enlarge overview figure"><img src="assets/overview1.png?v=e137e80684e3" width="2800" height="1438" loading="lazy" alt="FunCo-Grasp pipeline overview."></a>
+        <figcaption>To learn transferable grasp knowledge via functional correspondences, FunCo-Grasp operates across three sequential stages: (1) Cross-Embodiment Functional Correspondence, (2) Hand and Object Encoding, and (3) Functional-Part-Based Grasp Generation.</figcaption></figure>
     </section>
 
     <section class="section wrap" id="simulation" aria-labelledby="simulation-title">
       <h2 id="simulation-title">Simulation Results</h2>
-      <figure class="paper-figure simulation-figure" data-figure="simulation"><a class="figure-link" href="assets/exe1.png?v=fd7984b2123c" data-lightbox aria-label="Enlarge simulation figure"><img src="assets/exe1.png?v=fd7984b2123c" width="2600" height="983" loading="lazy" alt="Generated grasps on held-out objects across seen and unseen embodiments."></a></figure>
+      <figure class="paper-figure simulation-figure" data-figure="simulation"><a class="figure-link" href="assets/exe1.png?v=335d1619cfd7" data-lightbox aria-label="Enlarge simulation figure"><img src="assets/exe1.png?v=335d1619cfd7" width="2600" height="983" loading="lazy" alt="Generated grasps on held-out objects across seen and unseen embodiments."></a></figure>
 
       <div class="results-table-block" id="main-results">
         <div class="table-scroll" tabindex="0" role="region" aria-label="Main experimental results, scroll horizontally on small screens">
@@ -89,15 +90,15 @@
             </thead>
             <tbody>
               <tr data-method="gendex"><th scope="row">GenDexGrasp</th><td class="group-start">67.00</td><td>50.00</td><td>53.30</td><td class="average">56.77</td><td class="group-start">15.17</td><td>29.37</td><td>25.33</td><td>31.00</td><td class="average">25.22</td><td class="group-start">18.77</td></tr>
-              <tr data-method="cedex"><th scope="row">CEDex</th><td class="group-start"><span class="rank-second">92.66</span></td><td>85.16</td><td>86.43</td><td class="average">88.08</td><td class="group-start"><span class="rank-second">46.20</span></td><td><span class="rank-second">62.00</span></td><td><span class="rank-second">41.50</span></td><td><span class="rank-first">86.30</span></td><td class="average"><span class="rank-second">59.00</span></td><td class="group-start">12.52</td></tr>
+              <tr data-method="cedex"><th scope="row">CEDex</th><td class="group-start"><span class="rank-second">92.66</span></td><td>85.16</td><td>86.43</td><td class="average">88.08</td><td class="group-start"><span class="rank-second">46.20</span></td><td><span class="rank-second">62.00</span></td><td><span class="rank-second">71.50</span></td><td><span class="rank-first">86.30</span></td><td class="average"><span class="rank-second">66.50</span></td><td class="group-start">12.52</td></tr>
               <tr data-method="dro"><th scope="row">D(R,O) Grasp</th><td class="group-start">89.90</td><td>88.30</td><td>77.80</td><td class="average">85.33</td><td class="group-start">24.20</td><td>58.60</td><td>4.80</td><td>64.90</td><td class="average">38.13</td><td class="group-start">0.75</td></tr>
               <tr data-method="tro"><th scope="row">T(R,O) Grasp</th><td class="group-start">89.10</td><td><span class="rank-second">91.60</span></td><td>92.50</td><td class="average">91.07</td><td class="group-start">1.30</td><td>4.00</td><td>0.10</td><td>42.40</td><td class="average">11.95</td><td class="group-start"><span class="rank-second">0.21</span></td></tr>
-              <tr data-method="unimorph"><th scope="row">UniMorphGrasp<sup>†</sup></th><td class="group-start">90.30</td><td><span class="rank-first">93.00</span></td><td><span class="rank-first">98.80</span></td><td class="average"><span class="rank-first">94.00</span></td><td class="group-start">--</td><td>--</td><td>--</td><td>--</td><td class="average">--</td><td class="group-start">--</td></tr>
+              <tr data-method="unimorph"><th scope="row">UniMorphGrasp<sup>†</sup></th><td class="group-start">90.30</td><td><span class="rank-first">93.00</span></td><td><span class="rank-first">98.80</span></td><td class="average"><span class="rank-first">94.00</span></td><td class="group-start">--</td><td>--</td><td>--</td><td>--</td><td class="average">--</td><td class="group-start">0.45</td></tr>
               <tr data-method="fira" class="ours"><th scope="row">FunCo-Grasp <span>(Ours)</span></th><td class="group-start"><span class="rank-first">97.20</span></td><td>86.20</td><td><span class="rank-second">93.80</span></td><td class="average"><span class="rank-second">92.40</span></td><td class="group-start"><span class="rank-first">68.20</span></td><td><span class="rank-first">72.73</span></td><td><span class="rank-first">80.40</span></td><td><span class="rank-second">74.73</span></td><td class="average"><span class="rank-first">74.02</span></td><td class="group-start"><span class="rank-first">0.16</span></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="table-caption" id="results-caption">Grasp success on held-out objects across seen and unseen embodiments, and inference time on seen embodiments. Red and yellow mark the best and second-best values. <sup>†</sup>UniMorphGrasp follows its published protocol; code was unavailable at evaluation. -- denotes unavailable results.</p>
+        <p class="table-caption" id="results-caption">Grasp success on held-out objects and per-grasp runtime. Red and yellow mark the best and second-best values. <sup>†</sup>UniMorphGrasp results come from its paper because its code is not publicly available. -- denotes unavailable results.</p>
       </div>
 
       <div class="grasp-gallery" id="grasps">
@@ -110,7 +111,7 @@
     </section>
 
     <section class="section wrap real-section" id="real-world" aria-labelledby="real-title">
-      <h2 id="real-title">Real-world Results</h2>
+      <h2 id="real-title">Real-World Experiments</h2>
       <div class="real-videos">
         <figure><h3>ApexHand</h3><div class="media-slot" data-media="apex" aria-label="ApexHand real-world video placeholder"><div class="media-placeholder"><span class="play-mark" aria-hidden="true">▷</span><span>ApexHand</span><small>Video coming soon</small></div></div></figure>
         <figure><h3>Revo2</h3><div class="media-slot" data-media="revo2" aria-label="Revo2 real-world video placeholder"><div class="media-placeholder"><span class="play-mark" aria-hidden="true">▷</span><span>Revo2</span><small>Video coming soon</small></div></div></figure>

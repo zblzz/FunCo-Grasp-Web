@@ -1,12 +1,12 @@
 {
   "method": "FunCo-Grasp",
   "title": "Function beyond Form: Functional Correspondence for Cross-Embodiment Dexterous Grasp Generation",
-  "abstract": "Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Existing approaches often lack explicit correspondences between structurally different hand regions that play similar functional roles in a grasp, a concept we refer to as functional correspondence. Consequently, their models tend to learn hand-specific interaction patterns rather than transferable grasp knowledge, limiting generalization to unseen embodiments. To address this limitation, we introduce FunCo-Grasp, which establishes functional correspondences across heterogeneous hand embodiments. Specifically, it aligns each hand to a canonical functional schema by mapping its physical links to shared functional parts and expressing them in canonical local frames. This alignment provides a consistent representation for inter-part and hand–object interactions, allowing the model to learn transferable grasp knowledge across hands. Conditioned on the aligned hand representation and object geometry, a diffusion model generates the target spatial arrangement of the functional parts, which are then converted into an executable joint configuration. Adapting FunCo-Grasp to an unseen hand requires only its geometric and kinematic models and a one-time lightweight functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. Simulation experiments on the filtered CMapDataset show that FunCo-Grasp achieves average success rates of 92.40% on three seen hands and 74.02% on four unseen hands on held-out objects. In direct sim-to-real experiments, the same model achieves an overall success rate of 76.00% on two unseen real hands without real-world training. These results demonstrate the effectiveness of FunCo-Grasp in transferring grasp knowledge to unseen hands.",
+  "abstract": "Cross-embodiment dexterous grasp generation remains challenging because robotic hands differ substantially in geometry, topology, and kinematics. Existing approaches often lack explicit correspondences between structurally different hand regions that play similar functional roles in a grasp, a concept we refer to as functional correspondence. Consequently, their models tend to learn hand-specific interaction patterns rather than transferable grasp knowledge, limiting generalization to unseen hands. To address this limitation, we introduce FunCo-Grasp, which establishes functional correspondences across heterogeneous hand embodiments. Specifically, it aligns each hand to a canonical functional schema by mapping its physical links to shared functional parts and expressing them in canonical local frames. This alignment provides a consistent representation for inter-part and hand–object interactions, allowing the model to learn transferable grasp knowledge across hands. Conditioned on the aligned hand representation and object geometry, a diffusion model generates the target spatial arrangement of the functional parts, which are then converted into an executable joint configuration. Adapting FunCo-Grasp to an unseen hand requires only its geometric and kinematic models and a one-time lightweight functional annotation, without target-hand grasp data, fine-tuning, or learned retargeting. In simulation on held-out objects from the filtered CMapDataset, FunCo-Grasp achieves average success rates of 92.40% on three seen hands and 74.02% on four unseen hands. In direct sim-to-real experiments, the same model achieves an overall success rate of 76.00% on two unseen hands without real-world training. These results demonstrate the effectiveness of FunCo-Grasp in transferring grasp knowledge to unseen hands.",
   "figures": {
-    "alignment": "Functional Interaction Representation Alignment. A lightweight manual functional annotation establishes (a) cross-hand functional correspondence and (b) canonical interaction frames, enabling (c) grasp transfer from training to unseen embodiments.",
-    "overview": "FunCo-Grasp establishes functional correspondences across heterogeneous hands through three sequential stages. Cross-Embodiment Functional Correspondence first maps hand regions to shared functional parts according to their grasping roles and expresses them in canonical local frames. Hand and Object Encoding then integrates these parts with hand-specific geometry and kinematics, while extracting geometric features from the object. Finally, Functional-Part-Based Grasp Generation uses the aligned hand representation and object geometry to generate the target spatial arrangement of the functional parts and converts it into executable joint configurations via inverse kinematics. Together, these stages enable cross-embodiment dexterous grasp generation without target-hand grasp data, fine-tuning, or learned retargeting."
+    "alignment": "Functional-Part-Based Hand Alignment. Top: the canonical functional schema and cross-hand functional correspondences established through a one-time lightweight functional annotation. (a) Shared part types. (b) Canonical forward, closing, and lateral axes. (c) Grasp transfer from seen to unseen hands.",
+    "overview": "To learn transferable grasp knowledge via functional correspondences, FunCo-Grasp operates across three sequential stages: (1) Cross-Embodiment Functional Correspondence, (2) Hand and Object Encoding, and (3) Functional-Part-Based Grasp Generation."
   },
-  "tableCaption": "Grasp success on held-out objects across seen and unseen embodiments, and inference time on seen embodiments. Red and yellow mark the best and second-best values. †UniMorphGrasp follows its published protocol; code was unavailable at evaluation. -- denotes unavailable results.",
+  "tableCaption": "Grasp success on held-out objects and per-grasp runtime. Red and yellow mark the best and second-best values. †UniMorphGrasp results come from its paper because its code is not publicly available. -- denotes unavailable results.",
   "rows": [
     {
       "id": "gendex",
@@ -87,7 +87,7 @@
           "rank": "second"
         },
         {
-          "value": "41.50",
+          "value": "71.50",
           "rank": "second"
         },
         {
@@ -95,7 +95,7 @@
           "rank": "first"
         },
         {
-          "value": "59.00",
+          "value": "66.50",
           "rank": "second"
         },
         {
@@ -243,7 +243,7 @@
           "rank": null
         },
         {
-          "value": "--",
+          "value": "0.45",
           "rank": null
         }
       ]

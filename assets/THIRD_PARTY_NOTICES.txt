@@ -1,5 +1,11 @@
 Third-party components and geometry
 
+Typography uses the Inter and Fraunces fonts, distributed under the SIL Open
+Font License 1.1. The unmodified Latin WOFF2 subsets are from Google Fonts.
+Full copyright and license notices are included in fonts/Inter-OFL.txt and
+fonts/Fraunces-OFL.txt. The generated fonts.css embeds those same bytes without
+modification; the website does not request fonts from an external provider.
+
 The interactive viewer uses Three.js 0.180.0 under the MIT license.
 The full license is included at ../vendor/three/LICENSE.txt.
 Only module import paths were changed for self-hosting.

@@ -234,18 +234,34 @@ function createGallery(catalog) {
   numbers.append(previous,...graspButtons,next);
   previous.addEventListener('click',() => { selection.index = (selection.index+catalog.graspCount-1)%catalog.graspCount; update(); });
   next.addEventListener('click',() => { selection.index = (selection.index+1)%catalog.graspCount; update(); });
-  const reset = element('button','reset-view','Reset views'); reset.type = 'button';
+  const compact = element('select','grasp-compact');
+  compact.setAttribute('aria-label','Grasp');
+  graspButtons.forEach((_,index) => {
+    const option = element('option','',`${String(index+1).padStart(2,'0')} / ${catalog.graspCount}`);
+    option.value = String(index); compact.append(option);
+  });
+  compact.addEventListener('change',() => { selection.index = Number(compact.value); update(); });
+  const reset = element('button','reset-view reset-view-icon'); reset.type = 'button';
+  reset.setAttribute('aria-label','Reset views'); reset.title = 'Reset views';
+  const resetIcon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  resetIcon.setAttribute('viewBox','0 0 24 24'); resetIcon.setAttribute('aria-hidden','true');
+  const resetPath = document.createElementNS('http://www.w3.org/2000/svg','path');
+  resetPath.setAttribute('d','M3 10a9 9 0 1 1 2.7 8.4M3 4v6h6');
+  resetIcon.append(resetPath); reset.append(resetIcon);
   reset.addEventListener('click',() => rows.forEach(row => row.reset()));
-  navigation.append(label,numbers,reset);
+  navigation.append(label,numbers,compact);
+  const toolbar = element('div','gallery-toolbar');
+  toolbar.append(objectBar,navigation,reset);
   const announcement = element('span','sr-only'); announcement.setAttribute('role','status');
   function update() {
     objects.value = selection.object.id;
+    compact.value = String(selection.index);
     objectCount.textContent = `${String(catalog.objects.indexOf(selection.object)+1).padStart(2,'0')} / ${String(catalog.objects.length).padStart(2,'0')}`;
     graspButtons.forEach((button,index) => button.setAttribute('aria-pressed',String(index === selection.index)));
     announcement.textContent = `${selection.object.label}, grasp ${selection.index+1} of ${catalog.graspCount}, across ${catalog.hands.length} embodiments.`;
     rows.forEach(row => row.update());
   }
-  gallery.append(objectBar,navigation,...rows.map(row => row.node),announcement);
+  gallery.append(toolbar,...rows.map(row => row.node),announcement);
   update();
   return gallery;
 }

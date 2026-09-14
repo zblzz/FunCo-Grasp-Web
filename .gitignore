@@ -5,6 +5,7 @@
 !/README.md
 !/index.html
 !/styles.css
+!/fonts.css
 !/site.js
 !/media.js
 !/site.config.json
@@ -16,6 +17,12 @@
 /assets/*
 !/assets/*.png
 !/assets/THIRD_PARTY_NOTICES.txt
+!/assets/fonts/
+/assets/fonts/*
+!/assets/fonts/inter-latin.woff2
+!/assets/fonts/fraunces-latin.woff2
+!/assets/fonts/Inter-OFL.txt
+!/assets/fonts/Fraunces-OFL.txt
 !/assets/teaser.mp4
 !/assets/apex-real.mp4
 !/assets/revo2-real.mp4
