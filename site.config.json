@@ -9,7 +9,7 @@
     }
   },
   "figures": {
-    "alignment": { "path": "assets/intro1.png", "source": "img/intro1.pdf", "maxPixels": 2200 },
+    "alignment": { "path": "assets/intro1.png", "source": "img/intro3.pdf", "maxPixels": 2200 },
     "overview": { "path": "assets/overview1.png", "source": "img/overview1.pdf", "maxPixels": 2800 },
     "simulation": { "path": "assets/exe1.png", "source": "img/exe1.pdf", "maxPixels": 2600 }
   },
