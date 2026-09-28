@@ -16,9 +16,9 @@
   "videos": {
     "teaser": {
       "path": "assets/video/teaser.mp4",
-      "enabled": false,
+      "enabled": true,
       "title": "Project video",
-      "poster": null,
+      "poster": "assets/video/teaser.jpg",
       "autoplay": false,
       "muted": true,
       "loop": true,
@@ -26,9 +26,9 @@
     },
     "apex": {
       "path": "assets/video/apex-real.mp4",
-      "enabled": false,
+      "enabled": true,
       "title": "ApexHand real-world experiments",
-      "poster": null,
+      "poster": "assets/video/apex-real.jpg",
       "autoplay": true,
       "muted": true,
       "loop": true,
@@ -36,9 +36,9 @@
     },
     "revo2": {
       "path": "assets/video/revo2-real.mp4",
-      "enabled": false,
+      "enabled": true,
       "title": "Revo2 real-world experiments",
-      "poster": null,
+      "poster": "assets/video/revo2-real.jpg",
       "autoplay": true,
       "muted": true,
       "loop": true,

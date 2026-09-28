@@ -22,9 +22,25 @@ try {
     source.src = url.href;
     source.type = 'video/mp4';
     source.addEventListener('error', () => { slot.replaceChildren(Object.assign(document.createElement('p'), {textContent:'Video could not be loaded.'})); });
-    video.append(source);
     slot.replaceChildren(video);
     slot.classList.add('has-video');
     slot.setAttribute('aria-label', entry.label);
+    // Do not download off-screen experiment videos alongside the main page.
+    // Native media requests also work in the anonymous host's opaque sandbox.
+    const attach = () => {
+      if (source.parentNode) return;
+      video.append(source);
+      video.load();
+    };
+    video.addEventListener('play', attach, {once:true});
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          attach();
+          observer.disconnect();
+        }
+      }, {rootMargin:'200px'});
+      observer.observe(slot);
+    } else attach();
   });
 } catch (error) { console.warn(error.message); }
