@@ -166,6 +166,7 @@ figcaption { max-width:940px; margin:20px auto 0; font-size:14px; line-height:1.
 .real-videos { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
 .real-videos h3 { font:500 16px/1.4 var(--sans); text-align:left; margin-bottom:12px; color:var(--muted); }
 .real-videos figure { min-width:0; }
+.real-videos .media-slot { aspect-ratio:8/5; }
 .footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:15px; padding:27px max(32px,calc((100% - 1100px)/2)); border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
 .footer-links { display:flex; gap:24px; }
 .footer a { color:var(--muted); }
