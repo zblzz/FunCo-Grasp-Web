@@ -41,6 +41,8 @@ h3 { font:500 30px/1.25 var(--serif); text-align:center; margin-bottom:24px; }
 .title-lead { display:block; font:500 clamp(42px,6vw,76px)/1.06 var(--serif); letter-spacing:-.055em; }
 .title-detail { display:block; max-width:860px; margin:19px auto 0; font-size:clamp(22px,2.3vw,30px); line-height:1.36; letter-spacing:-.026em; font-weight:400; color:var(--muted); }
 .publication-authors { font-size:15px; }
+.publication-author { white-space:nowrap; }
+.publication-authors a { color:var(--accent-ink); }
 .publication-venue { font-size:12px; color:var(--muted); margin-top:3px; }
 .publication-links { display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; margin-top:25px; }
 .resource-button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:43px; padding:9px 18px; border:1px solid var(--line); border-radius:999px; background:#fff; color:var(--ink); font-size:13px; line-height:1.4; transition:transform .18s ease,border-color .18s ease,background .18s ease; }

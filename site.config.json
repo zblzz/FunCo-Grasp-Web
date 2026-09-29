@@ -1,10 +1,22 @@
 {
   "version": 1,
+  "publication": {
+    "authors": [
+      { "name": "Bolin Zou", "affiliation": "1", "url": null },
+      { "name": "Wenlong Dong", "affiliation": null, "url": null },
+      { "name": "Mu Ai", "affiliation": "1", "url": null },
+      { "name": "Chao Tang", "affiliation": null, "url": null },
+      { "name": "Aoxiang Gu", "affiliation": "1", "url": null },
+      { "name": "Lipeng Chen", "affiliation": null, "url": null },
+      { "name": "Hong Zhang", "affiliation": "1", "url": null }
+    ],
+    "affiliations": { "1": "Shenzhen Key Laboratory of Robotics and Computer Vision, Southern University of Science and Technology, Shenzhen, China" }
+  },
   "content": "site.content.json",
   "resources": {
     "paper": { "path": "assets/paper.pdf", "enabled": false },
     "code": {
-      "url": "https://anonymous.4open.science/r/ICRA2027_FIRA-Grasp-B68E/README.md",
+      "url": null,
       "ready": false
     }
   },
