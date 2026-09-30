@@ -21,8 +21,8 @@
   "resources": {
     "paper": { "path": "assets/paper.pdf", "enabled": false },
     "code": {
-      "url": null,
-      "ready": false
+      "url": "https://github.com/zblzz/FunCo-Grasp",
+      "ready": true
     }
   },
   "figures": {
