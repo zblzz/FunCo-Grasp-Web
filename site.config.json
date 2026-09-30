@@ -3,14 +3,19 @@
   "publication": {
     "authors": [
       { "name": "Bolin Zou", "affiliation": "1", "url": null },
-      { "name": "Wenlong Dong", "affiliation": null, "url": null },
+      { "name": "Wenlong Dong", "affiliation": "1", "url": null },
       { "name": "Mu Ai", "affiliation": "1", "url": null },
-      { "name": "Chao Tang", "affiliation": null, "url": null },
+      { "name": "Chao Tang", "affiliation": "2", "url": null },
       { "name": "Aoxiang Gu", "affiliation": "1", "url": null },
-      { "name": "Lipeng Chen", "affiliation": null, "url": null },
+      { "name": "Lipeng Chen", "affiliation": "3,4", "url": null },
       { "name": "Hong Zhang", "affiliation": "1", "url": null }
     ],
-    "affiliations": { "1": "Shenzhen Key Laboratory of Robotics and Computer Vision, Southern University of Science and Technology, Shenzhen, China" }
+    "affiliations": {
+      "1": "Shenzhen Key Laboratory of Robotics and Computer Vision, Southern University of Science and Technology, Shenzhen, China.",
+      "2": "Department of Robotics, Perception and Learning, KTH Royal Institute of Technology, Stockholm, Sweden.",
+      "3": "School of Artificial Intelligence, Shanghai Jiao Tong University, Shanghai, China.",
+      "4": "Rysen Robotics, Shenzhen, China."
+    }
   },
   "content": "site.content.json",
   "resources": {
