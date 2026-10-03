@@ -19,7 +19,7 @@
   },
   "content": "site.content.json",
   "resources": {
-    "paper": { "path": "assets/paper.pdf", "enabled": false },
+    "paper": { "path": "assets/paper.pdf", "url": "https://arxiv.org/abs/2609.39006", "enabled": true },
     "code": {
       "url": "https://github.com/zblzz/FunCo-Grasp",
       "ready": true

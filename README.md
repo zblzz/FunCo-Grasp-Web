@@ -21,5 +21,5 @@ The simulated grasp visualization uses a shared object selector and ten grasp-in
 ## Availability
 
 - This is a website repository, not an implementation release. Training and inference code are not included.
-- The project video and both real-world experiment videos are included. The manuscript PDF and implementation release are pending.
+- The project video and both real-world experiment videos are included. The [paper is available on arXiv](https://arxiv.org/abs/2609.39006), including its PDF and version history. The [algorithm repository](https://github.com/zblzz/FunCo-Grasp) is separate from this website repository.
 - The submitted paper and accompanying submission materials remain the primary record of the method and experiments.
